@@ -1,7 +1,5 @@
 package com.example.newparq;
 
-import static java.util.regex.Pattern.matches;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,11 +27,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 public class LoginActivity extends AppCompatActivity {
 private EditText editTextpassword, editTextemail;
@@ -225,7 +220,7 @@ private static final String TAG = "LoginActivity";
 
                         //open user profile
                         //start user profile activity
-                        startActivity(new Intent(LoginActivity.this,UserProfileActivity.class));
+                        startActivity(new Intent(LoginActivity.this,HomeActivity.class));
                         finish();
 
                     }else {
@@ -290,7 +285,7 @@ private static final String TAG = "LoginActivity";
             Toast.makeText(this, "Already logged in", Toast.LENGTH_SHORT).show();
 
             //start the userprofileActivity
-            startActivity(new Intent(LoginActivity.this,UserProfileActivity.class));
+            startActivity(new Intent(LoginActivity.this, GoogleMapsActivity.class));
             finish(); //close login activity
         }
         else{

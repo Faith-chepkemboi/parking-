@@ -91,6 +91,7 @@ public class UserProfileActivity extends AppCompatActivity {
                 intent.addCategory(Intent.CATEGORY_APP_EMAIL);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK); //opens mail app
                 startActivity(intent);
+//                finish();
             }
         });
 

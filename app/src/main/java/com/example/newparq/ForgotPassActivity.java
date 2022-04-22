@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -16,6 +17,7 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 
 public class ForgotPassActivity extends AppCompatActivity {
 
@@ -23,6 +25,7 @@ public class ForgotPassActivity extends AppCompatActivity {
     private EditText editTextPassResetEmail;
     private ProgressBar progressBar;
     private FirebaseAuth authProfile;
+    private final static String TAG= "ForgotPassActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,7 +79,7 @@ public class ForgotPassActivity extends AppCompatActivity {
                             Toast.LENGTH_SHORT).show();
 
                     Intent intent = new Intent(ForgotPassActivity.this, LoginActivity.class);
-                    //to prevent user from returining to register activity on pressing back button after registration
+                    //to prevent user from returining to Forgotpass activity
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK
                             | Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
@@ -84,6 +87,17 @@ public class ForgotPassActivity extends AppCompatActivity {
 
 
                 }else {
+                    try {
+                        throw task.getException();
+                        
+                    }catch (FirebaseAuthInvalidUserException e){
+                        Toast.makeText(ForgotPassActivity.this, "User does not exist or is no longer using this account ",
+                                Toast.LENGTH_SHORT).show();
+                    }catch (Exception e){
+                        Log.e(TAG, e.getMessage());
+                        Toast.makeText(ForgotPassActivity.this,e.getMessage(),
+                                Toast.LENGTH_SHORT).show();
+                    }
                     Toast.makeText(ForgotPassActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
                 }
                 progressBar.setVisibility(View.GONE);
