@@ -220,7 +220,7 @@ private static final String TAG = "LoginActivity";
 
                         //open user profile
                         //start user profile activity
-                        startActivity(new Intent(LoginActivity.this,HomeActivity.class));
+                        startActivity(new Intent(LoginActivity.this,GoogleMapsActivity.class));
                         finish();
 
                     }else {
@@ -278,21 +278,21 @@ private static final String TAG = "LoginActivity";
 
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        if (authProfile.getCurrentUser() != null) {
-            Toast.makeText(this, "Already logged in", Toast.LENGTH_SHORT).show();
-
-            //start the userprofileActivity
-            startActivity(new Intent(LoginActivity.this, GoogleMapsActivity.class));
-            finish(); //close login activity
-        }
-        else{
-            Toast.makeText(this, "You can now login ", Toast.LENGTH_SHORT).show();
-        }
+//    @Override
+//    protected void onStart() {
+//        super.onStart();
+//        if (authProfile.getCurrentUser() != null) {
+//            Toast.makeText(this, "Already logged in", Toast.LENGTH_SHORT).show();
+//
+//            //start the userprofileActivity
+//            startActivity(new Intent(LoginActivity.this, GoogleMapsActivity.class));
+//            finish(); //close login activity
+//        }
+//        else{
+//            Toast.makeText(this, "You can now login ", Toast.LENGTH_SHORT).show();
+//        }
     }
-}
+
 
 
 
