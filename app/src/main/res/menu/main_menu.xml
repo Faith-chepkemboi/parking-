@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+H
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_baseline_home_24"
+            android:title="Home" />
+        <item
+            android:id="@+id/nav_bookslot"
+            android:icon="@drawable/ic_baseline_book_24"
+            android:title="Book slot" />
+        <item
+            android:id="@+id/nav_available_slot"
+            android:icon="@drawable/ic_baseline_event_available_24"
+            android:title="Available slot" />
+        <item
+            android:id="@+id/rateus"
+            android:icon="@drawable/ic_baseline_star_rate_24"
+            android:title="Rate us" />
+
+
+    </group>
+    <group android:checkableBehavior="single">
+        <item android:title="Profile">
+            <menu>
+                <item
+                    android:id="@+id/nav_login"
+                    android:icon="@drawable/ic_baseline_login_24"
+                    android:title="Login" />
+                <item
+                    android:id="@+id/nav_profile"
+                    android:icon="@drawable/ic_baseline_person_24"
+                    android:title="Profile" />
+                <item
+                    android:id="@+id/nav_logout"
+                    android:icon="@drawable/ic_baseline_logout_24"
+                    android:title="Logout" />
+
+
+            </menu>
+        </item>
+    </group>
+    <item android:title="Contact us">
+
+        <menu>
+<!--            <item-->
+<!--                android:id="@id/nav_share"-->
+<!--                android:title="Share"-->
+<!--                android:icon="@drawable/ic_baseline_share_24"/>-->
+
+<!--            <item-->
+<!--                android:id="@id/nav_rate"-->
+<!--                android:title="Rate us"-->
+<!--                android:icon="@drawable/ic_baseline_star_rate_24"/>-->
+
+
+        </menu>
+
+
+    </item>
+
+
+</menu>

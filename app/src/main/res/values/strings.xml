@@ -6,7 +6,6 @@
     <string name="passwordd">Password</string>
     <string name="emaiil">Email</string>
     <string name="full_names">Full Names</string>
-    <string name="title_activity_try">TryActivity</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
@@ -18,6 +17,9 @@
     <string name="title_activity_maps">MapsActivity</string>
     <string name="title_activity_maps2">MapsActivity2</string>
     <string name="title_activity_google_maps">GoogleMapsActivity</string>
+    <string name="book_with_us">Book with us</string>
+    <string name="mapstext">Click on the map to get location</string>
+    <string name="search">Search...</string>
 
 
 </resources>
