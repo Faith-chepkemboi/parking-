@@ -1,62 +1,77 @@
 package com.example.newparq;
 
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
-
 import static androidx.core.content.PermissionChecker.PERMISSION_GRANTED;
-
 import static com.example.newparq.R.layout.activity_google_maps;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.widget.SearchView;
-import androidx.constraintlayout.widget.Placeholder;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.FragmentActivity;
-
 import android.Manifest;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
-import android.location.LocationManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextClock;
+import android.widget.AutoCompleteTextView;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.newparq.databinding.ActivityGoogleMapsBinding;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentActivity;
+
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.location.places.PlaceReport;
+import com.google.android.gms.location.places.GeoDataClient;
+import com.google.android.gms.location.places.Places;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-//import com.example.newparq.databinding.ActivityGoogleMapsBinding;
+import com.google.android.material.navigation.NavigationView;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Objects;
 
-public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCallback {
+//import com.example.newparq.databinding.ActivityGoogleMapsBinding;
+//import com.example.newparq.databinding.ActivityGoogleMapsBinding;
+
+public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCallback,
+        GoogleApiClient.OnConnectionFailedListener{
+
+    DrawerLayout drawerLayout;
+    NavigationView navigationView;
+    Toolbar toolbar;
+
+        @Override
+        public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+
+        }
+
+
+
+
+
 
     private Bundle savedInstanceState;
+
+
 
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
@@ -84,7 +99,15 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
         }
     }
     private static final float DEFAULT_ZOOM = 10f;
+    private GeoDataClient mGeoDataClient;
+    private GoogleApiClient  googleApiClient;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1234;
+    private static final LatLngBounds LAT_LNG_BOUNDS = new LatLngBounds(
+
+            new LatLng(-40, -168), new LatLng(71, 136));
+
+
+
     GoogleMap mMap;
     GoogleMap googleMap;
     SupportMapFragment mapFragment;
@@ -97,7 +120,11 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
     private Boolean LocationPermissionsGranted = false;
 
     private FusedLocationProviderClient fusedLocationProviderClient;
-    private EditText searchText;
+
+    //widgets
+    private GoogleApiClient mGoogleApiClent;
+    private AutoCompleteTextView searchText;
+    private ImageView gps;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,14 +132,47 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
         super.onCreate(savedInstanceState);
         setContentView(activity_google_maps);
 
-        searchText = (EditText) findViewById(R.id.search_location);
+        searchText = (AutoCompleteTextView) findViewById(R.id.search_location);
+        gps =(ImageView) findViewById(R.id.ic_gps);
+
+        //navigation drawers
+        drawerLayout = findViewById(R.id.drawerLayout);
+        navigationView = findViewById(R.id.nav_view);
+        toolbar=findViewById(R.id.toolbar);
+        
+        setSupportActionBar(toolbar);
+
+        ActionBarDrawerToggle toggle= new ActionBarDrawerToggle(this,drawerLayout,toolbar, R.string.navigation_drawer_open,R.string.navigation_drawer_close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+
+
+
         getLocationPermission();
 
 
 
     }
+
+    private void setSupportActionBar(Toolbar toolbar) {
+    }
+
+
     private  void init(){
         Log.d(TAG,"init: initializing");
+
+        mGoogleApiClent = new GoogleApiClient
+                .Builder(this)
+                .addApi(Places.GEO_DATA_API)
+                .addApi(Places.PLACE_DETECTION_API)
+                .enableAutoManage(this,this)
+                .build();
+        PlaceAutocompleteAdapter mplaceAutocompleteAdapter = new PlaceAutocompleteAdapter(this,mGeoDataClient,LAT_LNG_BOUNDS,null,mGoogleApiClent);
+
+
+        searchText.setAdapter(mplaceAutocompleteAdapter);
+
+
         searchText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
@@ -129,8 +189,18 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
                 return false;
             }
         });
+        gps.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d(TAG, "onClick: clicked gps icon");
+                getDeviceLocation();
+
+            }
+        });
         hideSoftKeyboard();
     }
+
+
 
     private void geolocate() {
         Log.d(TAG, "geolocate: geolocating");
@@ -201,7 +271,7 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
         Log.d(TAG, "moveCamera: moving camera to: lat:" +latLng.latitude + ",lng:" + latLng.longitude);
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom));
 
-        if (title.equals("my location")){
+//        if (title.equals("my location")){
 
             MarkerOptions options = new MarkerOptions()
                     .position(latLng)
@@ -209,9 +279,9 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
             mMap.addMarker(options);
 
         }
-        hideSoftKeyboard();
+//        hideSoftKeyboard();
 
-        }
+//         }
 
 
     private void initMap() {
@@ -279,6 +349,7 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
     private void hideSoftKeyboard(){
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
     }
+
 
 
 }
