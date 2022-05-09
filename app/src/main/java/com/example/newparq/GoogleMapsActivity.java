@@ -5,6 +5,7 @@ import static androidx.core.content.PermissionChecker.PERMISSION_GRANTED;
 import static com.example.newparq.R.layout.activity_google_maps;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -12,6 +13,8 @@ import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
@@ -25,6 +28,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentActivity;
 
@@ -53,7 +57,7 @@ import java.util.List;
 //import com.example.newparq.databinding.ActivityGoogleMapsBinding;
 
 public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCallback,
-        GoogleApiClient.OnConnectionFailedListener{
+        GoogleApiClient.OnConnectionFailedListener, NavigationView.OnNavigationItemSelectedListener {
 
     DrawerLayout drawerLayout;
     NavigationView navigationView;
@@ -139,12 +143,25 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
         drawerLayout = findViewById(R.id.drawerLayout);
         navigationView = findViewById(R.id.nav_view);
         toolbar=findViewById(R.id.toolbar);
-        
+
         setSupportActionBar(toolbar);
 
+        //hide or show menu(login /logout)
+        Menu menu = navigationView.getMenu();
+        menu.findItem(R.id.nav_login).setVisible(false);
+//        menu.findItem(R.id.nav_profile).setVisible(false);
+
+
+        navigationView.bringToFront();
         ActionBarDrawerToggle toggle= new ActionBarDrawerToggle(this,drawerLayout,toolbar, R.string.navigation_drawer_open,R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
+
+        //make menu clickable
+        navigationView.setNavigationItemSelectedListener(this);
+
+        navigationView.setCheckedItem(R.id.nav_home);
+
 
 
 
@@ -154,8 +171,24 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
 
     }
 
+    //to close drawerlayout on back press
+
+    @Override
+    public void onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+
+
+            super.onBackPressed();
+        }
+    }
+
     private void setSupportActionBar(Toolbar toolbar) {
     }
+
+//    private void setSupportActionBar(Toolbar toolbar) {
+//    }
 
 
     private  void init(){
@@ -201,7 +234,7 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
     }
 
 
-
+       //creatin nsearch in google maps
     private void geolocate() {
         Log.d(TAG, "geolocate: geolocating");
 
@@ -230,7 +263,7 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
 
     }
 
-
+      //getting current location on google maps
     private void getDeviceLocation(){
             Log.d(TAG, "getDeviceLocation: getting the current location");
             fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
@@ -289,10 +322,10 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
         SupportMapFragment mapFragment =(SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(GoogleMapsActivity.this);
     }
-
+     //accessing google maps permisiion
     private void getLocationPermission() {
         Log.d(TAG,"Getting location permission");
-        String[] permissions = {Manifest.permission.ACCESS_FINE_LOCATION,
+        String[] permissions = {ACCESS_FINE_LOCATION,
         Manifest.permission.ACCESS_COARSE_LOCATION};
 
         if (ContextCompat.checkSelfPermission(this.getApplicationContext(),
@@ -349,9 +382,27 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
     private void hideSoftKeyboard(){
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
     }
+    //menu clickable
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.nav_home:
+                break;
+            case R.id.nav_profile:
+                Intent intent = new Intent(GoogleMapsActivity.this,UserProfileActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.rateus:
+                Toast.makeText(this, "Rate us", Toast.LENGTH_SHORT).show();
+                break;
+
+        }
+        drawerLayout.closeDrawer(GravityCompat.START);
 
 
-
+        return true;
+    }
 }
 
 
