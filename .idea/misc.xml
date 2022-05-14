@@ -4,6 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Tabkil2019/AndroidStudioProjects/Newparq/app/src/main/res/drawable/search_button.xml" value="0.1" />
+        <entry key="..\:/Users/Tabkil2019/AndroidStudioProjects/Newparq/app/src/main/res/layout/activity_available_slots.xml" value="0.25" />
+        <entry key="..\:/Users/Tabkil2019/AndroidStudioProjects/Newparq/app/src/main/res/layout/activity_book_slot.xml" value="0.18854166666666666" />
         <entry key="..\:/Users/Tabkil2019/AndroidStudioProjects/Newparq/app/src/main/res/layout/activity_forgot_pass.xml" value="0.1" />
         <entry key="..\:/Users/Tabkil2019/AndroidStudioProjects/Newparq/app/src/main/res/layout/activity_google_maps.xml" value="0.18854166666666666" />
         <entry key="..\:/Users/Tabkil2019/AndroidStudioProjects/Newparq/app/src/main/res/layout/activity_login.xml" value="0.1" />

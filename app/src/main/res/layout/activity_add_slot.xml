@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/teal_700"
+    tools:context=".RegisterActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:paddingTop="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:fontFamily="serif-monospace"-->
+<!--                android:text="Sign Up"-->
+<!--                android:textStyle="bold" />-->
+
+            <EditText
+                android:id="@+id/plate"
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/round"
+                android:hint="Vehicle plate number"
+                android:inputType="text"
+                android:textColor="@color/purple_700" />
+
+
+
+            <EditText
+                android:id="@+id/Vtype"
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/round"
+                android:hint="@string/vType"
+                android:inputType="text"
+                android:textColor="@color/purple_700" />
+
+
+            <!--            <EditText-->
+            <!--                android:id="@+id/idno"-->
+            <!--                android:layout_width="300dp"-->
+            <!--                android:layout_height="40dp"-->
+            <!--                android:layout_centerHorizontal="true"-->
+            <!--                android:layout_gravity="center"-->
+            <!--                android:layout_marginTop="20dp"-->
+            <!--                android:background="@drawable/round"-->
+            <!--                android:hint="National Identity Number"-->
+            <!--                android:inputType="number"-->
+            <!--                android:textColor="@color/purple_700" />-->
+
+
+            <EditText
+                android:id="@+id/duration"
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/round"
+                android:hint="Duration"
+                android:inputType="time"
+                android:textColor="@color/purple_700" />
+
+
+
+            <EditText
+                android:id="@+id/location"
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/round"
+                android:hint="Location to park"
+                android:inputType="text"
+                android:textColor="@color/purple_700" />
+
+
+            <Button
+                android:id="@+id/SubmitBook"
+                android:layout_width="250dp"
+                android:layout_height="40dp"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/button"
+                android:text="Book"
+                android:textColor="@color/color_primary" />
+
+            <ProgressBar
+                android:id="@+id/progress"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:elevation="10dp"
+                android:visibility="gone" />
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</RelativeLayout>
+

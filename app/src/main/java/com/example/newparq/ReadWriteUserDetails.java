@@ -3,6 +3,7 @@ package com.example.newparq;
 public class ReadWriteUserDetails {
     public String  phoneTxt,identyNumberTxt;
 
+
     //constructor
     public ReadWriteUserDetails(){};
 

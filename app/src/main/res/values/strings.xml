@@ -18,11 +18,12 @@
     <string name="title_activity_maps2">MapsActivity2</string>
     <string name="title_activity_google_maps">GoogleMapsActivity</string>
     <string name="book_with_us">Book with us</string>
-    <string name="mapstext">Click on the map to get location</string>
+    <string name="mapsText">Click on the map to get location</string>
     <string name="search">Search...</string>
 
     <string name="navigation_drawer_open"> Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="vType">Vehicle Type</string>
 
 
 </resources>

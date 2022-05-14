@@ -5,6 +5,7 @@ import static androidx.core.content.PermissionChecker.PERMISSION_GRANTED;
 import static com.example.newparq.R.layout.activity_google_maps;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
@@ -44,6 +45,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -52,6 +54,8 @@ import com.google.android.material.navigation.NavigationView;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+//import com.google.android.libraries.places.api.Places;
 
 //import com.example.newparq.databinding.ActivityGoogleMapsBinding;
 //import com.example.newparq.databinding.ActivityGoogleMapsBinding;
@@ -77,6 +81,7 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
 
 
 
+    @SuppressLint("MissingPermission")
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
 
@@ -84,6 +89,8 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
                 Toast.LENGTH_SHORT).show();
         Log.d(TAG, "onMapReady: map is ready");
         mMap = googleMap;
+
+
 
         if (LocationPermissionsGranted) {
             getDeviceLocation();
@@ -99,8 +106,31 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
             mMap.getUiSettings().setMyLocationButtonEnabled(false);
             init();
 
+            for (int i = 0; i < locationArrayList.size(); i++) {
+                mMap.addMarker(new MarkerOptions().position(locationArrayList.get(i))
+                        .snippet("Book a slot")
+                        .title("Parking slot"));
+                mMap.animateCamera(CameraUpdateFactory.zoomTo(18.0f));
+                mMap.moveCamera(CameraUpdateFactory.newLatLng(locationArrayList.get(i)));
+
+
+            }
+
+            //chamnging to bookActivity onclickk
+            mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+                @Override
+                public void onInfoWindowClick(Marker marker) {
+                    Intent intent = new Intent(GoogleMapsActivity.this, BookActivity.class);
+                    startActivity(intent);
+                }
+            });
+
+
+
 
         }
+
+
     }
     private static final float DEFAULT_ZOOM = 10f;
     private GeoDataClient mGeoDataClient;
@@ -115,6 +145,16 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
     GoogleMap mMap;
     GoogleMap googleMap;
     SupportMapFragment mapFragment;
+
+    //addind many markers
+    LatLng Jamaa = new LatLng( 0.0079 ,36.3671);
+    LatLng Mugo = new LatLng(  0.0341496, 36.3626534 );
+    LatLng KCB = new LatLng(  0.035165, 36.364293 );
+    LatLng Equity = new LatLng( 0.0386, 36.3643 );
+
+
+    private ArrayList<LatLng> locationArrayList;
+
 
     private static final String TAG = "GoogleMapsActivity";
 
@@ -166,6 +206,12 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
 
 
         getLocationPermission();
+
+        locationArrayList = new ArrayList<>();
+        locationArrayList.add(Jamaa);
+        locationArrayList.add(KCB);
+        locationArrayList.add(Mugo);
+        locationArrayList.add(Equity);
 
 
 
@@ -270,7 +316,7 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
 
             try {
                 if (LocationPermissionsGranted){
-                    Task location  =fusedLocationProviderClient.getLastLocation();
+                    @SuppressLint("MissingPermission") Task location  =fusedLocationProviderClient.getLastLocation();
                     location.addOnCompleteListener(new OnCompleteListener() {
                         @Override
                         public void onComplete(@NonNull Task task) {
@@ -310,6 +356,10 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
                     .position(latLng)
                     .title(title);
             mMap.addMarker(options);
+
+
+
+
 
         }
 //        hideSoftKeyboard();
@@ -396,6 +446,9 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
             case R.id.rateus:
                 Toast.makeText(this, "Rate us", Toast.LENGTH_SHORT).show();
                 break;
+            case  R.id.nav_bookslot:
+                Intent intent1 = new Intent(GoogleMapsActivity.this, AddSlotActivity.class);
+                startActivity(intent1);
 
         }
         drawerLayout.closeDrawer(GravityCompat.START);
