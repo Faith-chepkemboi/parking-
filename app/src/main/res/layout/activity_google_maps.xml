@@ -58,13 +58,13 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/black"
+            android:background="@color/quantum_tealA700"
 
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             map:layout_constraintEnd_toEndOf="parent"
             map:layout_constraintStart_toStartOf="parent"
             map:layout_constraintTop_toTopOf="parent"
-            map:navigationIcon="@drawable/ic_baseline_menu_black"/>
+            map:navigationIcon="@drawable/ic_baseline_menu_black" />
 
 
         <fragment xmlns:android="http://schemas.android.com/apk/res/android"

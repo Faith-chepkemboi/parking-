@@ -1,9 +1,161 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BookActivity">
+    android:layout_marginTop="100dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp" >
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <TextView
+            android:id="@+id/text1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/Nyahururu"
+            android:textStyle="bold"
+            android:textSize="19sp"
+            android:textColor="@color/quantum_tealA700" />
+
+        <TextView
+            android:id="@+id/text2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/laikipia_kenya"
+            android:textStyle="bold"
+            android:textColor="@color/teal_700"
+
+            />
+
+        <TableRow
+            android:background="#009688"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/rDuration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Duration" />
+
+            <TextView
+                android:id="@+id/rCharges"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Charges" />
+
+
+        </TableRow>
+
+        <TableRow
+            android:background="#DAE8FC"
+            android:padding="5dp">
+
+
+            <TextView
+                android:id="@+id/min1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="0 Minutes - 30 minutes" />
+
+            <TextView
+                android:id="@+id/money1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Kes 100.00" />
+        </TableRow>
+
+
+        <Button
+            android:id="@+id/Sbook1"
+            android:layout_width="240dp"
+            android:layout_height="40dp"
+
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button"
+            android:text="Book"
+            android:textColor="@color/color_primary" />
+
+
+        <TableRow
+            android:background="#DAE8FC"
+            android:padding="5dp">
+
+
+            <TextView
+                android:id="@+id/min2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="30 minutes - 4 hours" />
+
+            <TextView
+                android:id="@+id/money2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Kes 150.00" />
+
+
+
+
+        </TableRow>
+
+        <Button
+            android:id="@+id/Sbook2"
+            android:layout_width="240dp"
+            android:layout_height="40dp"
+
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button"
+            android:text="Book"
+            android:textColor="@color/color_primary" />
+
+        <TableRow
+            android:background="#DAE8FC"
+            android:padding="5dp">
+
+
+            <TextView
+                android:id="@+id/min3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="3 hours - 6 hours" />
+
+            <TextView
+                android:id="@+id/money3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Kes 200.00" />
+        </TableRow>
+
+
+
+        <Button
+            android:id="@+id/Sbook"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button"
+            android:text="Book"
+            android:textColor="@color/color_primary" />
+
+    </TableLayout>
+
+
+</RelativeLayout>

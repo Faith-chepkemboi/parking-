@@ -21,63 +21,45 @@
             android:orientation="vertical"
             android:padding="10dp">
 
-<!--            <TextView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_gravity="center"-->
-<!--                android:fontFamily="serif-monospace"-->
-<!--                android:text="Sign Up"-->
-<!--                android:textStyle="bold" />-->
+
 
             <EditText
-                android:id="@+id/plate"
+                android:id="@+id/phone"
                 android:layout_width="300dp"
                 android:layout_height="40dp"
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/round"
-                android:hint="Vehicle plate number"
-                android:inputType="text"
+                android:hint="Phone number"
+                android:inputType="phone"
                 android:textColor="@color/purple_700" />
 
 
 
             <EditText
-                android:id="@+id/Vtype"
+                android:id="@+id/charges"
                 android:layout_width="300dp"
                 android:layout_height="40dp"
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/round"
-                android:hint="@string/vType"
+                android:hint="Charges"
                 android:inputType="text"
                 android:textColor="@color/purple_700" />
 
 
-            <!--            <EditText-->
-            <!--                android:id="@+id/idno"-->
-            <!--                android:layout_width="300dp"-->
-            <!--                android:layout_height="40dp"-->
-            <!--                android:layout_centerHorizontal="true"-->
-            <!--                android:layout_gravity="center"-->
-            <!--                android:layout_marginTop="20dp"-->
-            <!--                android:background="@drawable/round"-->
-            <!--                android:hint="National Identity Number"-->
-            <!--                android:inputType="number"-->
-            <!--                android:textColor="@color/purple_700" />-->
-
 
             <EditText
-                android:id="@+id/duration"
+                android:id="@+id/slots"
                 android:layout_width="300dp"
                 android:layout_height="40dp"
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/round"
-                android:hint="Duration"
+                android:hint="Number of Slots"
                 android:inputType="time"
                 android:textColor="@color/purple_700" />
 
@@ -97,14 +79,14 @@
 
 
             <Button
-                android:id="@+id/SubmitBook"
+                android:id="@+id/SubmitAdd"
                 android:layout_width="250dp"
                 android:layout_height="40dp"
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/button"
-                android:text="Book"
+                android:text="Add"
                 android:textColor="@color/color_primary" />
 
             <ProgressBar

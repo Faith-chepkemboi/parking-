@@ -6,8 +6,12 @@ import static com.example.newparq.R.layout.activity_google_maps;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.drawable.Drawable;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -43,6 +47,8 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
@@ -55,10 +61,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-//import com.google.android.libraries.places.api.Places;
-
-//import com.example.newparq.databinding.ActivityGoogleMapsBinding;
-//import com.example.newparq.databinding.ActivityGoogleMapsBinding;
 
 public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCallback,
         GoogleApiClient.OnConnectionFailedListener, NavigationView.OnNavigationItemSelectedListener {
@@ -71,11 +73,6 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
         public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
         }
-
-
-
-
-
 
     private Bundle savedInstanceState;
 
@@ -109,12 +106,18 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
             for (int i = 0; i < locationArrayList.size(); i++) {
                 mMap.addMarker(new MarkerOptions().position(locationArrayList.get(i))
                         .snippet("Book a slot")
+                        .icon(BitmapFromVector(getApplicationContext(),  R.drawable.ic_baseline_local_parking_24))
                         .title("Parking slot"));
                 mMap.animateCamera(CameraUpdateFactory.zoomTo(18.0f));
                 mMap.moveCamera(CameraUpdateFactory.newLatLng(locationArrayList.get(i)));
 
 
             }
+
+
+
+//            }
+
 
             //chamnging to bookActivity onclickk
             mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
@@ -132,6 +135,34 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
 
 
     }
+
+    private BitmapDescriptor BitmapFromVector(Context applicationContext, int ic_baseline_local_parking_24) {
+
+        // below line is use to generate a drawable.
+        Drawable vectorDrawable = ContextCompat.getDrawable(applicationContext, ic_baseline_local_parking_24);
+
+        // below line is use to set bounds to our vector drawable.
+        vectorDrawable.setBounds(0, 0, vectorDrawable.getIntrinsicWidth(), vectorDrawable.getIntrinsicHeight());
+
+        // below line is use to create a bitmap for our
+        // drawable which we have added.
+        Bitmap bitmap = Bitmap.createBitmap(vectorDrawable.getIntrinsicWidth(), vectorDrawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+
+        // below line is use to add bitmap in our canvas.
+        Canvas canvas = new Canvas(bitmap);
+
+        // below line is use to draw our
+        // vector drawable in canvas.
+        vectorDrawable.draw(canvas);
+
+        // after generating our bitmap we are returning our bitmap.
+        return BitmapDescriptorFactory.fromBitmap(bitmap);
+
+
+
+
+    }
+
     private static final float DEFAULT_ZOOM = 10f;
     private GeoDataClient mGeoDataClient;
     private GoogleApiClient  googleApiClient;
@@ -233,9 +264,6 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
     private void setSupportActionBar(Toolbar toolbar) {
     }
 
-//    private void setSupportActionBar(Toolbar toolbar) {
-//    }
-
 
     private  void init(){
         Log.d(TAG,"init: initializing");
@@ -330,7 +358,7 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
 
                             }else{
                                 Log.d(TAG,"current location is null");
-                                Toast.makeText(GoogleMapsActivity.this, " Unable to get current loaction", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(GoogleMapsActivity.this, " Unable to get current location", Toast.LENGTH_SHORT).show();
                             }
 
                         }
@@ -446,9 +474,21 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
             case R.id.rateus:
                 Toast.makeText(this, "Rate us", Toast.LENGTH_SHORT).show();
                 break;
-            case  R.id.nav_bookslot:
+            case  R.id.nav_addslot:
                 Intent intent1 = new Intent(GoogleMapsActivity.this, AddSlotActivity.class);
                 startActivity(intent1);
+            case R.id.nav_available_slot:
+                Intent intent2=new Intent(GoogleMapsActivity.this,AvailableSlotsActivity.class);
+                startActivity(intent2);
+            case  R.id.help:
+                Intent intent3=new Intent(GoogleMapsActivity.this,HelpActivity.class);
+                startActivity(intent3);
+            case  R.id.nav_logout:
+
+                Intent intent4=new Intent(this, GoogleMapsActivity.class);
+                intent4.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent4);
+                this.finish();
 
         }
         drawerLayout.closeDrawer(GravityCompat.START);
@@ -468,8 +508,7 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
 
 
 
-//    }
-//
+
 
 
 

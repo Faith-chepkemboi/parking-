@@ -24,6 +24,8 @@
     <string name="navigation_drawer_open"> Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="vType">Vehicle Type</string>
+    <string name="Nyahururu">Nyahururu Parking Lots</string>
+    <string name="laikipia_kenya">Laikipia, Kenya</string>
 
 
 </resources>

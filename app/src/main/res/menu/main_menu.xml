@@ -7,13 +7,18 @@
             android:icon="@drawable/ic_baseline_home_24"
             android:title="Home" />
         <item
-            android:id="@+id/nav_bookslot"
+            android:id="@+id/nav_addslot"
             android:icon="@drawable/ic_baseline_book_24"
-            android:title="Book slot" />
+            android:title="Add slot" />
         <item
             android:id="@+id/nav_available_slot"
             android:icon="@drawable/ic_baseline_event_available_24"
             android:title="Available slot" />
+
+        <item
+            android:id="@+id/help"
+            android:icon="@drawable/ic_baseline_help_24"
+            android:title="Help?" />
         <item
             android:id="@+id/rateus"
             android:icon="@drawable/ic_baseline_star_rate_24"

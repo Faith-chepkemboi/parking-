@@ -3,8 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Tabkil2019/AndroidStudioProjects/Newparq/app/src/main/res/drawable/bookb.xml" value="0.161" />
+        <entry key="..\:/Users/Tabkil2019/AndroidStudioProjects/Newparq/app/src/main/res/drawable/button.xml" value="0.161" />
+        <entry key="..\:/Users/Tabkil2019/AndroidStudioProjects/Newparq/app/src/main/res/drawable/ic_baseline_local_parking_24.xml" value="0.167" />
+        <entry key="..\:/Users/Tabkil2019/AndroidStudioProjects/Newparq/app/src/main/res/drawable/ic_baseline_login_24.xml" value="0.167" />
+        <entry key="..\:/Users/Tabkil2019/AndroidStudioProjects/Newparq/app/src/main/res/drawable/ic_baseline_menu_black.xml" value="0.164" />
+        <entry key="..\:/Users/Tabkil2019/AndroidStudioProjects/Newparq/app/src/main/res/drawable/round.xml" value="0.161" />
         <entry key="..\:/Users/Tabkil2019/AndroidStudioProjects/Newparq/app/src/main/res/drawable/search_button.xml" value="0.1" />
+        <entry key="..\:/Users/Tabkil2019/AndroidStudioProjects/Newparq/app/src/main/res/layout/activity_add_slot.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Tabkil2019/AndroidStudioProjects/Newparq/app/src/main/res/layout/activity_available_slots.xml" value="0.25" />
+        <entry key="..\:/Users/Tabkil2019/AndroidStudioProjects/Newparq/app/src/main/res/layout/activity_book.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Tabkil2019/AndroidStudioProjects/Newparq/app/src/main/res/layout/activity_book_slot.xml" value="0.18854166666666666" />
         <entry key="..\:/Users/Tabkil2019/AndroidStudioProjects/Newparq/app/src/main/res/layout/activity_forgot_pass.xml" value="0.1" />
         <entry key="..\:/Users/Tabkil2019/AndroidStudioProjects/Newparq/app/src/main/res/layout/activity_google_maps.xml" value="0.18854166666666666" />

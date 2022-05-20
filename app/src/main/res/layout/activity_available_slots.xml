@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AvailableSlotsActivity"
+    android:background="@color/color_primary">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:background="@color/teal_700">
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:id="@+id/profile_available"
+            android:layout_centerInParent="true"
+            android:background="@drawable/ic_baseline_event_available_24"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/show_available"
+                android:hint="Loading..."
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+            android:textColor="@color/white" />
+
+<!--        android:hint="Loading..."&ndash;&gt;-->
+
+    </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="15dp"
+            android:layout_margin="15dp"
+            android:background="@color/white" >
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:id="@+id/Avphone"
+            android:background="@drawable/mobile"
+            android:layout_marginTop="20dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView_show_phone"
+            android:layout_alignStart="@id/Avphone"
+            android:hint="Loading..."
+            android:layout_marginStart="50dp"
+            android:textSize="18sp"/>
+
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/textView_show_phone"
+            android:background="@android:color/darker_gray"
+            android:id="@+id/divider_name"/>
+
+
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:id="@+id/ic_Amoney"
+            android:background="@drawable/ic_baseline_attach_money_24"
+            android:layout_below="@id/divider_name"
+
+            android:layout_marginTop="20dp"
+
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView_show_money"
+            android:layout_alignStart="@id/ic_Amoney"
+            android:hint="Loading..."
+            android:layout_below="@id/divider_name"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="20dp"
+            android:textSize="18sp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/textView_show_money"
+            android:background="@android:color/darker_gray"
+            android:id="@+id/divider_money"/>
+
+
+
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:id="@+id/ic_Numslots"
+            android:background="@drawable/ic_baseline_format_list_numbered_24"
+
+            android:layout_below="@id/divider_money"
+            android:layout_marginTop="20dp"
+
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView_show_Number"
+            android:layout_alignStart="@id/ic_Numslots"
+            android:hint="Loading..."
+            android:layout_below="@id/divider_money"
+
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="20dp"
+            android:textSize="18sp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+
+            android:layout_below="@id/textView_show_Number"
+            android:background="@android:color/darker_gray"
+            android:id="@+id/divider_number"/>
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:id="@+id/ic_Avlocation"
+            android:background="@drawable/ic_baseline_add_location_24"
+            android:layout_below="@id/divider_number"
+
+            android:layout_marginTop="20dp"
+
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView_show_location"
+            android:layout_alignStart="@id/ic_Numslots"
+            android:hint="Loading..."
+            android:layout_below="@id/divider_number"
+
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="20dp"
+            android:textSize="18sp"/>
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:id="@+id/progressbar"
+            android:elevation="10dp"
+            android:visibility="gone" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/ic_Numslots"
+            android:background="@android:color/darker_gray"
+            android:id="@+id/divider_location"/>
+
+        </RelativeLayout>
+
+
+
+
+
+
+    </LinearLayout>
+
+
+
+
+
+</ScrollView>
