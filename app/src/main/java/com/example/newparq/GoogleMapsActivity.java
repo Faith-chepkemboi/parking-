@@ -2,7 +2,6 @@ package com.example.newparq;
 
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 import static androidx.core.content.PermissionChecker.PERMISSION_GRANTED;
-import static com.example.newparq.R.layout.activity_google_maps;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -96,8 +95,6 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
 
                     != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this,
                     Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-
-                return;
             }
             mMap.setMyLocationEnabled(true);
             mMap.getUiSettings().setMyLocationButtonEnabled(false);
@@ -165,7 +162,7 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
 
     private static final float DEFAULT_ZOOM = 10f;
     private GeoDataClient mGeoDataClient;
-    private GoogleApiClient  googleApiClient;
+    GoogleApiClient  googleApiClient;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1234;
     private static final LatLngBounds LAT_LNG_BOUNDS = new LatLngBounds(
 
@@ -177,7 +174,7 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
     GoogleMap googleMap;
     SupportMapFragment mapFragment;
 
-    //addind many markers
+    //addinng many markers
     LatLng Jamaa = new LatLng( 0.0079 ,36.3671);
     LatLng Mugo = new LatLng(  0.0341496, 36.3626534 );
     LatLng KCB = new LatLng(  0.035165, 36.364293 );
@@ -203,9 +200,8 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        this.savedInstanceState = savedInstanceState;
         super.onCreate(savedInstanceState);
-        setContentView(activity_google_maps);
+        setContentView(R.layout.activity_google_maps);
 
         searchText = (AutoCompleteTextView) findViewById(R.id.search_location);
         gps =(ImageView) findViewById(R.id.ic_gps);
@@ -237,12 +233,14 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
 
 
         getLocationPermission();
-
         locationArrayList = new ArrayList<>();
         locationArrayList.add(Jamaa);
         locationArrayList.add(KCB);
         locationArrayList.add(Mugo);
         locationArrayList.add(Equity);
+
+
+
 
 
 
@@ -308,7 +306,7 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
     }
 
 
-       //creatin nsearch in google maps
+       //creating  search in google maps
     private void geolocate() {
         Log.d(TAG, "geolocate: geolocating");
 
@@ -354,7 +352,6 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
                                 moveCamera(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()),
                                 DEFAULT_ZOOM,
                                 "my location");
-
 
                             }else{
                                 Log.d(TAG,"current location is null");
@@ -481,14 +478,15 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
                 Intent intent2=new Intent(GoogleMapsActivity.this,AvailableSlotsActivity.class);
                 startActivity(intent2);
             case  R.id.help:
-                Intent intent3=new Intent(GoogleMapsActivity.this,HelpActivity.class);
+                Intent intent3=new Intent(GoogleMapsActivity.this,MpesaActivity.class);
                 startActivity(intent3);
             case  R.id.nav_logout:
-
-                Intent intent4=new Intent(this, GoogleMapsActivity.class);
-                intent4.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent4);
-                this.finish();
+//
+//                Intent intent4=new Intent(this, LoginActivity.class);
+//                startActivity(intent4);
+//                intent4.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                startActivity(intent4);
+//                this.finish();
 
         }
         drawerLayout.closeDrawer(GravityCompat.START);
@@ -500,124 +498,6 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//
-//                                              ocoder geocoder = new Geocoder(GoogleMapsActivity.this);
-////                    addressList.add(Address);
-//                                                  List<Address> addressList = new ArrayList<>();
-//
-//                                                  try {
-//
-//                                                      addressList = geocoder.getFromLocationName(location, 1);
-////
-////                            if (addressList.size() > 0) {
-////
-////                                latitude = addressList.get(0).getLatitude();
-////                                longtitude = addressList.get(0).getLongitude();
-////                            }
-//
-//                                                  } catch (IOException e) {
-//                                                      Log.e(TAG, "Geolocate exeption" + e.getMessage());
-//                                                  }
-//                                                  if (addressList.size() > 0) {
-//                                                      Address address = addressList.get(0);
-//                                                      Log.d(TAG, "geolocate found location" + address.toString());
-//
-//                                                      moveCamera(new LatLng(address.getLatitude(), address.getLongitude()),
-//                                                              DEFAULT_ZOOM, "my location");
-//
-//
-//                                                  } else {
-//                                                      Log.e(TAG, "onComplete: current location is null");
-//                                                      Toast.makeText(GoogleMapsActivity.this, "unable to get current location",
-//                                                              Toast.LENGTH_SHORT).show();
-//                                                  }
-//
-//
-////                    Toast.makeText(GoogleMapsActivity.this, address.toString(), Toast.LENGTH_SHORT).show();
-//                                              }
-
-
-//                    //getting location from the list
-//                Address address = addressList.get(0);
-
-                //creating variable for the location by adding longitudes and latitudes
-
-
-//                LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
-//
-//                //adding marker to the position
-//
-//                mMap.addMarker(new MarkerOptions().position(latLng).title(location));
-//
-//                //animating camera to that position
-//                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,10));
-//
-//                return false;
-//                }
-
-
-
-
-//            @Override
-//            public boolean onQueryTextChange(String newText) {
-//
-//                return false;
-//            }
-//        });
-//        mapFragment.getMapAsync(this::onMapReady);
-//
-//
-//    }
-//
-//    private void moveCamera(LatLng latLng, float zoom, String title) {
-//        Log.d(TAG, "moveCamera: moving camera to:lat: "+ latLng.latitude+ ", lng:" +latLng.longitude);
-//        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom));
-//
-//        MarkerOptions options =new MarkerOptions()
-//                .position(latLng)
-//                .title(title);
-//        mMap.addMarker(options);
-//
-//    }
-//
-//
-//    /**
-//         * Manipulates the map once available.
-//         * This callback is triggered when the map is ready to be used.
-//         * This is where we can add markers or lines, add listeners or move the camera. In this case,
-//         * we just add a marker near Sydney, Australia.
-//         * If Google Play services is not installed on the device, the user will be prompted to install
-//         * it inside the SupportMapFragment. This method will only be triggered once the user has
-//         * installed Google Play services and returned to the app.
-//         */
-//        @Override
-//        public void onMapReady (@NonNull GoogleMap googleMap){
-//            mMap = googleMap;
-//
-//
-//            // Add a marker in Sydney and move the camera
-//            LatLng Nairobi = new LatLng( -0.0632045267341352, 37.89191639003633 );
-//            mMap.addMarker(new MarkerOptions().position(Nairobi).title("Marker in Nairobi"));
-//            mMap.moveCamera(CameraUpdateFactory.newLatLng(Nairobi));
-//
-//        }
-//    }
 
 
 

@@ -26,6 +26,8 @@
     <string name="vType">Vehicle Type</string>
     <string name="Nyahururu">Nyahururu Parking Lots</string>
     <string name="laikipia_kenya">Laikipia, Kenya</string>
+    <string name="slots">Number of slots</string>
+    <string name="phone_no">Phone No</string>
 
 
 </resources>

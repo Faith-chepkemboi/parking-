@@ -16,11 +16,16 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Newparq">
+        <activity
+            android:name=".MpesaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LocationActivity"
+            android:exported="false" />
         <activity
             android:name=".HelpActivity"
             android:exported="false" />
@@ -33,6 +38,7 @@
         <activity
             android:name=".BookActivity"
             android:exported="false" />
+
         <activity
             android:name=".AddSlotActivity"
             android:exported="false" /> <!-- <activity -->
@@ -51,7 +57,7 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value=" AIzaSyCsIYQyFJPFrGZzMxeA36qCGWiLcJiT5Bc " />
+            android:value="AIzaSyCymZXeHtntoBUdbqFrphB2eNsFJEQpul0" />
 
         <activity
             android:name=".GoogleMapsActivity"

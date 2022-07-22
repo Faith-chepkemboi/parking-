@@ -73,7 +73,7 @@ public class BookActivity extends AppCompatActivity {
         bSubmit1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(BookActivity.this,PaymentsActivity.class);
+                Intent intent=new Intent(BookActivity.this, MpesaActivity.class);
                 startActivity(intent);
             }
         });
