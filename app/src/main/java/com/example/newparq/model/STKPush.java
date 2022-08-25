@@ -37,99 +37,103 @@ public class STKPush {
         @SerializedName("TransactionDesc")
         private String transactionDesc;
 
-        private final static long serialVersionUID = 2770749262469596525L;
+        private final static long serialVersionUID = -6138796772519026948L;
 
-    public STKPush(String businessShortCode, String password, String timestamp, String transactionType, String valueOf, String sanitizePhoneNumber, String partyb, String sanitizePhoneNumber1, String callbackurl, String mpesa_android_test, String testing) {
-    }
+//    public STKPush(String businessShortCode,
+//                   String password, String timestamp,
+//                   String transactionType, String valueOf, String sanitizePhoneNumber,
+//                   String partyb, String sanitizePhoneNumber1, String callbackurl,
+//                   String mpesa_android_test, String testing) {
+//    }
 
     /**
          * No args constructor for use in serialization
          *
          */
-//        public STKPush() {
+        public STKPush() {
+        }
+
+//        public Integer getBusinessShortCode() {
+//            return businessShortCode;
 //        }
-
-        public Integer getBusinessShortCode() {
-            return businessShortCode;
-        }
-
-        public void setBusinessShortCode(Integer businessShortCode) {
-            this.businessShortCode = businessShortCode;
-        }
-
-
-        public void setPassword(String password) {
-            this.password = password;
-        }
-
-
-        public void setTimestamp(String timestamp) {
-            this.timestamp = timestamp;
-        }
-
-        public String getTransactionType() {
-            return transactionType;
-        }
-
-        public void setTransactionType(String transactionType) {
-            this.transactionType = transactionType;
-        }
-
-        public Integer getAmount() {
-            return amount;
-        }
-
-        public void setAmount(Integer amount) {
-            this.amount = amount;
-        }
-
-        public Long getPartyA() {
-            return partyA;
-        }
-
-        public void setPartyA(Long partyA) {
-            this.partyA = partyA;
-        }
-
-        public Integer getPartyB() {
-            return partyB;
-        }
-
-        public void setPartyB(Integer partyB) {
-            this.partyB = partyB;
-        }
-
-        public Long getPhoneNumber() {
-            return phoneNumber;
-        }
-
-        public void setPhoneNumber(Long phoneNumber) {
-            this.phoneNumber = phoneNumber;
-        }
-
-        public String getCallBackURL() {
-            return callBackURL;
-        }
-
-        public void setCallBackURL(String callBackURL) {
-            this.callBackURL = callBackURL;
-        }
-
-        public String getAccountReference() {
-            return accountReference;
-        }
-
-        public void setAccountReference(String accountReference) {
-            this.accountReference = accountReference;
-        }
-
-        public String getTransactionDesc() {
-            return transactionDesc;
-        }
-
-        public void setTransactionDesc(String transactionDesc) {
-            this.transactionDesc = transactionDesc;
-        }
+//
+//        public void setBusinessShortCode(Integer businessShortCode) {
+//            this.businessShortCode = businessShortCode;
+//        }
+//
+//
+//        public void setPassword(String password) {
+//            this.password = password;
+//        }
+//
+//
+//        public void setTimestamp(String timestamp) {
+//            this.timestamp = timestamp;
+//        }
+//
+//        public String getTransactionType() {
+//            return transactionType;
+//        }
+//
+//        public void setTransactionType(String transactionType) {
+//            this.transactionType = transactionType;
+//        }
+//
+//        public Integer getAmount() {
+//            return amount;
+//        }
+//
+//        public void setAmount(Integer amount) {
+//            this.amount = amount;
+//        }
+//
+//        public Long getPartyA() {
+//            return partyA;
+//        }
+//
+//        public void setPartyA(Long partyA) {
+//            this.partyA = partyA;
+//        }
+//
+//        public Integer getPartyB() {
+//            return partyB;
+//        }
+//
+//        public void setPartyB(Integer partyB) {
+//            this.partyB = partyB;
+//        }
+//
+//        public Long getPhoneNumber() {
+//            return phoneNumber;
+//        }
+//
+//        public void setPhoneNumber(Long phoneNumber) {
+//            this.phoneNumber = phoneNumber;
+//        }
+//
+//        public String getCallBackURL() {
+//            return callBackURL;
+//        }
+//
+//        public void setCallBackURL(String callBackURL) {
+//            this.callBackURL = callBackURL;
+//        }
+//
+//        public String getAccountReference() {
+//            return accountReference;
+//        }
+//
+//        public void setAccountReference(String accountReference) {
+//            this.accountReference = accountReference;
+//        }
+//
+//        public String getTransactionDesc() {
+//            return transactionDesc;
+//        }
+//
+//        public void setTransactionDesc(String transactionDesc) {
+//            this.transactionDesc = transactionDesc;
+//        }
 
         /**
          *
@@ -145,7 +149,9 @@ public class STKPush {
          * @param timestamp
          * @param transactionDesc
          */
-        public STKPush(Integer businessShortCode, String password, String timestamp, String transactionType, Integer amount, Long partyA, Integer partyB, Long phoneNumber, String callBackURL, String accountReference, String transactionDesc) {
+        public STKPush(Integer businessShortCode, String password, String timestamp,
+                       String transactionType, Integer amount, Long partyA, Integer partyB,
+                       Long phoneNumber, String callBackURL, String accountReference, String transactionDesc) {
             super();
             this.businessShortCode = businessShortCode;
             this.password = password;
@@ -160,5 +166,7 @@ public class STKPush {
             this.transactionDesc = transactionDesc;
         }
 
+    public STKPush(String businessShortCode, String password, String timestamp, String transactionType, String valueOf, String sanitizePhoneNumber, String partyb, String sanitizePhoneNumber1, String callbackurl, String mpesa_android_test, String testing) {
     }
+}
 

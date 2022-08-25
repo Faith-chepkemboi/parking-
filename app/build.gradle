@@ -36,7 +36,7 @@ android {
         it.buildConfigField 'String', 'CONSUMER_SECRET', DARAJA_CONSUMER_SECRET
     }
 
-    compileOptions {
+     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
@@ -48,6 +48,7 @@ android {
 dependencies {
 
     implementation 'com.jakewharton:butterknife:10.1.0'
+    implementation 'androidx.annotation:annotation:1.4.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.1.0'
     implementation 'com.jakewharton.timber:timber:4.7.1'
 

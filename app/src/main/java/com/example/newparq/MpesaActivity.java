@@ -1,31 +1,30 @@
-package com.example.newparq;
+ package com.example.newparq;
 
-import static com.example.newparq.Constants.BUSINESS_SHORT_CODE;
-import static com.example.newparq.Constants.CALLBACKURL;
-import static com.example.newparq.Constants.PARTYB;
-import static com.example.newparq.Constants.PASSKEY;
-import static com.example.newparq.Constants.TRANSACTION_TYPE;
-import static java.lang.String.valueOf;
+ import static com.example.newparq.Constants.BUSINESS_SHORT_CODE;
+ import static com.example.newparq.Constants.CALLBACKURL;
+ import static com.example.newparq.Constants.PARTYB;
+ import static com.example.newparq.Constants.PASSKEY;
+ import static com.example.newparq.Constants.TRANSACTION_TYPE;
+ import static java.lang.String.valueOf;
 
-import android.app.ProgressDialog;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
+ import android.app.ProgressDialog;
+ import android.os.Bundle;
+ import android.view.View;
+ import android.widget.Button;
+ import android.widget.EditText;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+ import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.newparq.model.AccessToken;
-import com.example.newparq.model.STKPush;
-import com.example.newparq.services.DarajaApiClient;
+ import com.example.newparq.model.AccessToken;
+ import com.example.newparq.model.STKPush;
+ import com.example.newparq.services.DarajaApiClient;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import timber.log.Timber;
+ import butterknife.BindView;
+ import butterknife.ButterKnife;
+ import retrofit2.Call;
+ import retrofit2.Callback;
+ import retrofit2.Response;
+ import timber.log.Timber;
 
 public class MpesaActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -45,27 +44,32 @@ public class MpesaActivity extends AppCompatActivity implements View.OnClickList
         ButterKnife.bind(this);
 
         mProgressDialog = new ProgressDialog(this);
-        mApiClient = new DarajaApiClient() ;
+        mApiClient = new DarajaApiClient();
+
         mApiClient.setIsDebug(true); //Set True to enable logging, false to disable.
 
         mPay.setOnClickListener(this);
 
-        getAccessToken();
-    }
+            getAccessToken();
 
+        }
     private void getAccessToken() {
         mApiClient.setGetAccessToken(true);
-        mApiClient.mpesaService().getAccessToken().enqueue(new Callback<AccessToken>() {
+        mApiClient.mpesaService().getAccessToken()
+                .enqueue(new Callback<AccessToken>() {
             @Override
             public void onResponse(@NonNull Call<AccessToken> call, @NonNull Response<AccessToken> response) {
 
                 if (response.isSuccessful()) {
                     mApiClient.setAuthToken(response.body().accessToken);
+                }else{
+                    System.out.println("not successful");
                 }
             }
 
             @Override
-            public void onFailure(@NonNull Call<AccessToken> call, @NonNull Throwable t) {
+            public void onFailure(@NonNull Call<AccessToken>
+                                          call, @NonNull Throwable t) {
 
             }
         });
@@ -103,9 +107,11 @@ public class MpesaActivity extends AppCompatActivity implements View.OnClickList
         mApiClient.setGetAccessToken(false);
 
         //Sending the data to the Mpesa API, remember to remove the logging when in production.
-        mApiClient.mpesaService().sendPush(stkPush).enqueue(new Callback<STKPush>() {
+        mApiClient.mpesaService().sendPush(stkPush)
+                .enqueue(new Callback<STKPush>() {
             @Override
-            public void onResponse(@NonNull Call<STKPush> call, @NonNull Response<STKPush> response) {
+            public void onResponse(@NonNull Call<STKPush> call,
+                                   @NonNull Response<STKPush> response) {
                 mProgressDialog.dismiss();
                 try {
                     if (response.isSuccessful()) {
@@ -126,8 +132,11 @@ public class MpesaActivity extends AppCompatActivity implements View.OnClickList
         });
     }
 
-    private void sendPush(STKPush stkPush) {
-    }
+//    private Call<STKPush> sendPush(STKPush stkPush) {
+//    }
+
+//    private void sendPush(STKPush stkPush) {
+//    }
 
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {

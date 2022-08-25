@@ -50,6 +50,7 @@ public class DarajaApiClient {
 
         Retrofit.Builder builder = new Retrofit.Builder();
         builder.baseUrl(BASE_URL);
+//        "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest"
         builder.addConverterFactory(GsonConverterFactory.create());
 
         if (isDebug) {
@@ -73,6 +74,7 @@ public class DarajaApiClient {
         return retrofit;
     }
     public STKPushService mpesaService() {
+
         return getRestAdapter().create(STKPushService.class);
     }
 }
