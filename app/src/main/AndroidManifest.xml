@@ -21,6 +21,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Newparq">
         <activity
+            android:name=".RateUsActivity"
+            android:exported="false" />
+        <activity
             android:name=".MpesaActivity"
             android:exported="false" />
         <activity
@@ -38,7 +41,6 @@
         <activity
             android:name=".BookActivity"
             android:exported="false" />
-
         <activity
             android:name=".AddSlotActivity"
             android:exported="false" /> <!-- <activity -->

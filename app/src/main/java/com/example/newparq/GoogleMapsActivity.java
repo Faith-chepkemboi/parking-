@@ -470,6 +470,8 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
                 break;
             case R.id.rateus:
                 Toast.makeText(this, "Rate us", Toast.LENGTH_SHORT).show();
+                Intent intent5 =new Intent(GoogleMapsActivity.this,RateUsActivity.class);
+                startActivity(intent5);
                 break;
             case  R.id.nav_addslot:
                 Intent intent1 = new Intent(GoogleMapsActivity.this, AddSlotActivity.class);
@@ -482,8 +484,9 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
                 startActivity(intent3);
             case  R.id.nav_logout:
 //
-//                Intent intent4=new Intent(this, LoginActivity.class);
-//                startActivity(intent4);
+                Intent intent4=new Intent(GoogleMapsActivity.this,LoginActivity.class);
+                startActivity(intent4);
+
 //                intent4.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 //                startActivity(intent4);
 //                this.finish();

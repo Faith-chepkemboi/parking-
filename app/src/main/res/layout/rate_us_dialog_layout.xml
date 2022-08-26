@@ -19,6 +19,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="120dp"
                 android:background="@color/color_second"/>
+
             <RelativeLayout
                 android:layout_width="150dp"
                 android:layout_height="150dp"
@@ -32,9 +33,80 @@
                     android:layout_height="match_parent"
                     android:background="@drawable/round_back_white_1000"/>
 
-
+                <ImageView
+                    android:id="@+id/ratingImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    android:padding="25dp"
+                    android:src="@drawable/three_star" />
             </RelativeLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rate Our App"
+                android:layout_marginTop="10dp"
+                android:textColor="#CC000000"
+                android:textSize="25dp"
+                android:textStyle="bold"
+                android:layout_gravity="center"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textSize="16sp"
+                android:layout_marginTop="10dp"
+                android:text="if you enjoy using our App Would mind rating our App"
+                />
+            <androidx.appcompat.widget.AppCompatRatingBar
+                android:id="@+id/ratingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:rating="3"
+                android:theme="@style/MyRatingBar"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:gravity="end"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp">
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/laterBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:text="May be Later"
+                    android:textAllCaps="false"
+                    android:textColor="#CC000000"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    android:background="@drawable/round_back_brown_6"/>
 
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:text="Rate Now"
+                    android:id="@+id/rateNowBtn"
+                    android:textAllCaps="false"
+                    android:textColor="#FFFFFF"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    android:background="@drawable/round_back_blue_10"/>
+
+
+
+            </LinearLayout>
 
         </LinearLayout>
 

@@ -25,4 +25,16 @@
     <style name="Theme.Newparq.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.Newparq.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="MyRatingBar" parent="Widget.AppCompat.RatingBar">
+
+        //non selected star color
+        <item name="colorControlNormal">#4D000000</item>
+        //selected star color
+        <item name="android:colorControlActivated">@color/color_second</item>
+
+
+
+    </style>
+
+
 </resources>
