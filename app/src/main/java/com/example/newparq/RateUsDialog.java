@@ -30,16 +30,24 @@ public class RateUsDialog extends Dialog {
         final ImageView ratingImage = findViewById(R.id.ratingImage);
 
         rateNowBtn.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
+                String totalStars = "Total Stars:: " + ratingBar.getNumStars();
+                String rating = "Rating :: " + ratingBar.getRating();
+                
+
+
 
             }
+
         });
         laterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //hide rating dialog
                 dismiss();
+
             }
         });
 

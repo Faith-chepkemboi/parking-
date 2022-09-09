@@ -68,24 +68,22 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
     NavigationView navigationView;
     Toolbar toolbar;
 
-        @Override
-        public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
-        }
+    }
 
     private Bundle savedInstanceState;
-
 
 
     @SuppressLint("MissingPermission")
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
 
-        Toast.makeText(this, "Map is ready",
-                Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, "Map is ready",
+//                Toast.LENGTH_SHORT).show();
         Log.d(TAG, "onMapReady: map is ready");
         mMap = googleMap;
-
 
 
         if (LocationPermissionsGranted) {
@@ -103,14 +101,13 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
             for (int i = 0; i < locationArrayList.size(); i++) {
                 mMap.addMarker(new MarkerOptions().position(locationArrayList.get(i))
                         .snippet("Book a slot")
-                        .icon(BitmapFromVector(getApplicationContext(),  R.drawable.ic_baseline_local_parking_24))
+                        .icon(BitmapFromVector(getApplicationContext(), R.drawable.ic_baseline_local_parking_24))
                         .title("Parking slot"));
                 mMap.animateCamera(CameraUpdateFactory.zoomTo(18.0f));
                 mMap.moveCamera(CameraUpdateFactory.newLatLng(locationArrayList.get(i)));
 
 
             }
-
 
 
 //            }
@@ -124,8 +121,6 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
                     startActivity(intent);
                 }
             });
-
-
 
 
         }
@@ -156,18 +151,15 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
         return BitmapDescriptorFactory.fromBitmap(bitmap);
 
 
-
-
     }
 
     private static final float DEFAULT_ZOOM = 10f;
     private GeoDataClient mGeoDataClient;
-    GoogleApiClient  googleApiClient;
+    GoogleApiClient googleApiClient;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1234;
     private static final LatLngBounds LAT_LNG_BOUNDS = new LatLngBounds(
 
             new LatLng(-40, -168), new LatLng(71, 136));
-
 
 
     GoogleMap mMap;
@@ -175,10 +167,10 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
     SupportMapFragment mapFragment;
 
     //addinng many markers
-    LatLng Jamaa = new LatLng( 0.0079 ,36.3671);
-    LatLng Mugo = new LatLng(  0.0341496, 36.3626534 );
-    LatLng KCB = new LatLng(  0.035165, 36.364293 );
-    LatLng Equity = new LatLng( 0.0386, 36.3643 );
+    LatLng Jamaa = new LatLng(0.0079, 36.3671);
+    LatLng Mugo = new LatLng(0.0341496, 36.3626534);
+    LatLng KCB = new LatLng(0.035165, 36.364293);
+    LatLng Equity = new LatLng(0.0386, 36.3643);
 
 
     private ArrayList<LatLng> locationArrayList;
@@ -204,12 +196,12 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
         setContentView(R.layout.activity_google_maps);
 
         searchText = (AutoCompleteTextView) findViewById(R.id.search_location);
-        gps =(ImageView) findViewById(R.id.ic_gps);
+        gps = (ImageView) findViewById(R.id.ic_gps);
 
         //navigation drawers
         drawerLayout = findViewById(R.id.drawerLayout);
         navigationView = findViewById(R.id.nav_view);
-        toolbar=findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
 
         setSupportActionBar(toolbar);
 
@@ -220,7 +212,7 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
 
 
         navigationView.bringToFront();
-        ActionBarDrawerToggle toggle= new ActionBarDrawerToggle(this,drawerLayout,toolbar, R.string.navigation_drawer_open,R.string.navigation_drawer_close);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
@@ -230,18 +222,12 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
         navigationView.setCheckedItem(R.id.nav_home);
 
 
-
-
         getLocationPermission();
         locationArrayList = new ArrayList<>();
         locationArrayList.add(Jamaa);
         locationArrayList.add(KCB);
         locationArrayList.add(Mugo);
         locationArrayList.add(Equity);
-
-
-
-
 
 
     }
@@ -263,16 +249,16 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
     }
 
 
-    private  void init(){
-        Log.d(TAG,"init: initializing");
+    private void init() {
+        Log.d(TAG, "init: initializing");
 
         mGoogleApiClent = new GoogleApiClient
                 .Builder(this)
                 .addApi(Places.GEO_DATA_API)
                 .addApi(Places.PLACE_DETECTION_API)
-                .enableAutoManage(this,this)
+                .enableAutoManage(this, this)
                 .build();
-        PlaceAutocompleteAdapter mplaceAutocompleteAdapter = new PlaceAutocompleteAdapter(this,mGeoDataClient,LAT_LNG_BOUNDS,null,mGoogleApiClent);
+        PlaceAutocompleteAdapter mplaceAutocompleteAdapter = new PlaceAutocompleteAdapter(this, mGeoDataClient, LAT_LNG_BOUNDS, null, mGoogleApiClent);
 
 
         searchText.setAdapter(mplaceAutocompleteAdapter);
@@ -282,14 +268,14 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
             @Override
             public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
                 if (actionId == EditorInfo.IME_ACTION_SEARCH
-                    || actionId == EditorInfo.IME_ACTION_DONE
-                    || keyEvent.getAction() == keyEvent.ACTION_DOWN
-                    || keyEvent.getAction() == keyEvent.KEYCODE_ENTER){
+                        || actionId == EditorInfo.IME_ACTION_DONE
+                        || keyEvent.getAction() == keyEvent.ACTION_DOWN
+                        || keyEvent.getAction() == keyEvent.KEYCODE_ENTER) {
 
                     geolocate();
 
 
-                    }
+                }
 
                 return false;
             }
@@ -306,7 +292,7 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
     }
 
 
-       //creating  search in google maps
+    //creating  search in google maps
     private void geolocate() {
         Log.d(TAG, "geolocate: geolocating");
 
@@ -317,76 +303,71 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
         try {
             list = geocoder.getFromLocationName(searchString, 1);
 
-        }catch (IOException e){
+        } catch (IOException e) {
             Log.e(TAG, "geolocate: IOException:" + e.getMessage());
         }
-        if (list.size() > 0){
+        if (list.size() > 0) {
             Address address = list.get(0);
 
-            Log.d(TAG,"geolocate: found a location:" + address.toString());
+            Log.d(TAG, "geolocate: found a location:" + address.toString());
 
             moveCamera(new LatLng(address.getLatitude(), address.getLongitude()), DEFAULT_ZOOM,
                     address.getAddressLine(0));
 
 
-
-            
         }
 
     }
 
-      //getting current location on google maps
-    private void getDeviceLocation(){
-            Log.d(TAG, "getDeviceLocation: getting the current location");
-            fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+    //getting current location on google maps
+    private void getDeviceLocation() {
+        Log.d(TAG, "getDeviceLocation: getting the current location");
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
-            try {
-                if (LocationPermissionsGranted){
-                    @SuppressLint("MissingPermission") Task location  =fusedLocationProviderClient.getLastLocation();
-                    location.addOnCompleteListener(new OnCompleteListener() {
-                        @Override
-                        public void onComplete(@NonNull Task task) {
-                            if (task.isSuccessful() && task.getResult() !=null){
-                                Log.d(TAG,"found location");
-                                Location currentLocation = (Location) task.getResult();
-                                moveCamera(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()),
-                                DEFAULT_ZOOM,
-                                "my location");
+        try {
+            if (LocationPermissionsGranted) {
+                @SuppressLint("MissingPermission") Task location = fusedLocationProviderClient.getLastLocation();
+                location.addOnCompleteListener(new OnCompleteListener() {
+                    @Override
+                    public void onComplete(@NonNull Task task) {
+                        if (task.isSuccessful() && task.getResult() != null) {
+                            Log.d(TAG, "found location");
+                            Location currentLocation = (Location) task.getResult();
+                            moveCamera(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()),
+                                    DEFAULT_ZOOM,
+                                    "my location");
 
-                            }else{
-                                Log.d(TAG,"current location is null");
-                                Toast.makeText(GoogleMapsActivity.this, " Unable to get current location", Toast.LENGTH_SHORT).show();
-                            }
-
+                        } else {
+                            Log.d(TAG, "current location is null");
+                            Toast.makeText(GoogleMapsActivity.this, " Unable to get current location", Toast.LENGTH_SHORT).show();
                         }
-                    });
+
+                    }
+                });
 
 
+            }
 
-                }
-
-            }catch (SecurityException e){
-                Log.e(TAG, "getDeviceLocation: security Exeption"  +e.getMessage() );
+        } catch (SecurityException e) {
+            Log.e(TAG, "getDeviceLocation: security Exeption" + e.getMessage());
         }
 
 
-        }
-        private void moveCamera(LatLng latLng,float zoom,String title){
-        Log.d(TAG, "moveCamera: moving camera to: lat:" +latLng.latitude + ",lng:" + latLng.longitude);
+    }
+
+    private void moveCamera(LatLng latLng, float zoom, String title) {
+        Log.d(TAG, "moveCamera: moving camera to: lat:" + latLng.latitude + ",lng:" + latLng.longitude);
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom));
 
 //        if (title.equals("my location")){
 
-            MarkerOptions options = new MarkerOptions()
-                    .position(latLng)
-                    .title(title);
-            mMap.addMarker(options);
+        MarkerOptions options = new MarkerOptions()
+                .position(latLng)
+                .title(title);
+        mMap.addMarker(options);
 
 
-
-
-
-        }
+    }
 //        hideSoftKeyboard();
 
 //         }
@@ -394,14 +375,15 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
 
     private void initMap() {
         Log.d(TAG, "initMap: initializing map");
-        SupportMapFragment mapFragment =(SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(GoogleMapsActivity.this);
     }
-     //accessing google maps permisiion
+
+    //accessing google maps permisiion
     private void getLocationPermission() {
-        Log.d(TAG,"Getting location permission");
+        Log.d(TAG, "Getting location permission");
         String[] permissions = {ACCESS_FINE_LOCATION,
-        Manifest.permission.ACCESS_COARSE_LOCATION};
+                Manifest.permission.ACCESS_COARSE_LOCATION};
 
         if (ContextCompat.checkSelfPermission(this.getApplicationContext(),
                 FINE_LOCATION) == PERMISSION_GRANTED) {
@@ -415,21 +397,20 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
                         permissions,
                         LOCATION_PERMISSION_REQUEST_CODE);
             }
-        }else{
+        } else {
             ActivityCompat.requestPermissions(this,
                     permissions,
                     LOCATION_PERMISSION_REQUEST_CODE);
-                }
+        }
 
 
-            }
-
+    }
 
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-       Log.d(TAG, "onRequestPermission: called");
+        Log.d(TAG, "onRequestPermission: called");
         LocationPermissionsGranted = false;
 
         switch (requestCode) {
@@ -439,7 +420,7 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
                         if (grantResults[i] != PERMISSION_GRANTED) {
 
                             LocationPermissionsGranted = false;
-                            Log.d(TAG,"Permission failed");
+                            Log.d(TAG, "Permission failed");
                             return;
                         }
 
@@ -454,42 +435,50 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
         }
     }
 
-    private void hideSoftKeyboard(){
+    private void hideSoftKeyboard() {
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
     }
     //menu clickable
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.nav_home:
                 break;
             case R.id.nav_profile:
-                Intent intent = new Intent(GoogleMapsActivity.this,UserProfileActivity.class);
+                Intent intent = new Intent(GoogleMapsActivity.this, UserProfileActivity.class);
                 startActivity(intent);
                 break;
             case R.id.rateus:
                 Toast.makeText(this, "Rate us", Toast.LENGTH_SHORT).show();
-                Intent intent5 =new Intent(GoogleMapsActivity.this,RateUsActivity.class);
+                Intent intent5 = new Intent(GoogleMapsActivity.this, RateUsActivity.class);
                 startActivity(intent5);
                 break;
-            case  R.id.nav_addslot:
+            case R.id.nav_addslot:
                 Intent intent1 = new Intent(GoogleMapsActivity.this, AddSlotActivity.class);
                 startActivity(intent1);
+                break;
             case R.id.nav_available_slot:
-                Intent intent2=new Intent(GoogleMapsActivity.this,AvailableSlotsActivity.class);
+                Intent intent2 = new Intent(GoogleMapsActivity.this, AvailableSlotsActivity.class);
                 startActivity(intent2);
-            case  R.id.help:
-                Intent intent3=new Intent(GoogleMapsActivity.this,MpesaActivity.class);
+                break;
+            case R.id.help:
+                Intent intent3 = new Intent(GoogleMapsActivity.this, HelpActivity.class);
                 startActivity(intent3);
-            case  R.id.nav_logout:
+                break;
+            case R.id.nav_logout:
+                break;
+
 //
-                Intent intent4=new Intent(GoogleMapsActivity.this,LoginActivity.class);
-                startActivity(intent4);
+//                Intent intent4=new Intent(GoogleMapsActivity.this,LoginActivity.class);
+//                startActivity(intent4);
 
 //                intent4.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 //                startActivity(intent4);
 //                this.finish();
+            case R.id.nav_setting:
+                Intent intent4 = new Intent(GoogleMapsActivity.this, Preference.class);
+                startActivity(intent4);
 
         }
         drawerLayout.closeDrawer(GravityCompat.START);

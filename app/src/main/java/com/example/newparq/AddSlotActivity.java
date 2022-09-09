@@ -115,7 +115,7 @@ public class AddSlotActivity extends AppCompatActivity {
 //
 //
 //    }
-        addslotRef= FirebaseDatabase.getInstance().getReference().child("slots");
+        addslotRef = FirebaseDatabase.getInstance().getReference().child("slots");
 
         buttonSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -126,13 +126,14 @@ public class AddSlotActivity extends AppCompatActivity {
 
 
     }
-    private void insertSlotData(){
-        String phone=editTextAphone.getText().toString();
-        String charges=editTextAcharges.getText().toString();
-        String Nslots=editTextNslots.getText().toString();
-        String location=editTextLocation.getText().toString();
 
-        AddDetails addDetails=new AddDetails(phone,charges,Nslots,location);
+    private void insertSlotData() {
+        String phone = editTextAphone.getText().toString();
+        String charges = editTextAcharges.getText().toString();
+        String Nslots = editTextNslots.getText().toString();
+        String location = editTextLocation.getText().toString();
+
+        AddDetails addDetails = new AddDetails(phone, charges, Nslots, location);
 
         addslotRef.push().setValue(addDetails);
 
@@ -141,13 +142,7 @@ public class AddSlotActivity extends AppCompatActivity {
 
 
         Intent intent = new Intent(AddSlotActivity.this, AvailableSlotsActivity.class);
-                       startActivity(intent);
-
-
-
-
-
-
+        startActivity(intent);
 
 
     }

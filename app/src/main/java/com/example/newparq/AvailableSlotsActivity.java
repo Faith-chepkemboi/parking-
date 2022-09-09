@@ -17,7 +17,7 @@ import java.util.List;
 
 public class AvailableSlotsActivity extends AppCompatActivity {
 
-//    TextView textViewWelcome, textViewPhoneNumber, textViewCharges, textViewNumberofslots, textViewLocation;
+    //    TextView textViewWelcome, textViewPhoneNumber, textViewCharges, textViewNumberofslots, textViewLocation;
 //    ProgressBar progressBar;
 //    ImageView imageView;
 //    String phoneTxt,chargeTxt,slotTxt,locationTxt;
@@ -25,7 +25,8 @@ public class AvailableSlotsActivity extends AppCompatActivity {
     ListView myListview;
     List<AddDetails> addDetailsList;
     DatabaseReference addslotRef;
-//
+
+    //
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +35,7 @@ public class AvailableSlotsActivity extends AppCompatActivity {
         myListview = findViewById(R.id.ListView);
         addDetailsList = new ArrayList<>();
 
-        addslotRef= FirebaseDatabase.getInstance().getReference("slots");
+        addslotRef = FirebaseDatabase.getInstance().getReference("slots");
 
         addslotRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -42,15 +43,14 @@ public class AvailableSlotsActivity extends AppCompatActivity {
 
                 addDetailsList.clear();
 
-                for (DataSnapshot detailsDataSnapshot : snapshot.getChildren()){
-                    AddDetails addDetails=detailsDataSnapshot.getValue(AddDetails.class);
+                for (DataSnapshot detailsDataSnapshot : snapshot.getChildren()) {
+                    AddDetails addDetails = detailsDataSnapshot.getValue(AddDetails.class);
 
                     addDetailsList.add(addDetails);
 
                 }
-                ListAvailableAdapter adapter =new ListAvailableAdapter(AvailableSlotsActivity.
-                        this,addDetailsList);
-
+                ListAvailableAdapter adapter = new ListAvailableAdapter(AvailableSlotsActivity.
+                        this, addDetailsList);
 
 
                 myListview.setAdapter(adapter);
@@ -63,9 +63,6 @@ public class AvailableSlotsActivity extends AppCompatActivity {
 
             }
         });
-
-
-
 
 
     }

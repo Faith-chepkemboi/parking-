@@ -52,24 +52,23 @@ package com.example.newparq;
 //        this.location= Location;
 //
 //    }
-public  class AddDetails{
+public class AddDetails {
     String phone;
     String charges;
     String Nslots;
     String location;
 
-    public AddDetails(){
+    public AddDetails() {
 
     }
 
 
-
-    public AddDetails(String phone, String charges, String Nslots, String location){
-        this.phone=phone;
-        this.charges=charges;
-        this.Nslots=Nslots;
-        this.location=location;
-}
+    public AddDetails(String phone, String charges, String Nslots, String location) {
+        this.phone = phone;
+        this.charges = charges;
+        this.Nslots = Nslots;
+        this.location = location;
+    }
 
 
     public String getCharges() {

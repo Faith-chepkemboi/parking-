@@ -21,6 +21,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Newparq">
         <activity
+            android:name=".PreferenceActivity"
+            android:exported="false" />
+        <activity
             android:name=".RateUsActivity"
             android:exported="false" />
         <activity
@@ -90,6 +93,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Preference"/>
     </application>
 
 </manifest>

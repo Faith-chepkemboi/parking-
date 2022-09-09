@@ -8,6 +8,7 @@
         <entry key="..\:/Users/Tabkil2019/AndroidStudioProjects/Newparq/app/src/main/res/drawable/ic_baseline_local_parking_24.xml" value="0.167" />
         <entry key="..\:/Users/Tabkil2019/AndroidStudioProjects/Newparq/app/src/main/res/drawable/ic_baseline_login_24.xml" value="0.167" />
         <entry key="..\:/Users/Tabkil2019/AndroidStudioProjects/Newparq/app/src/main/res/drawable/ic_baseline_menu_black.xml" value="0.164" />
+        <entry key="..\:/Users/Tabkil2019/AndroidStudioProjects/Newparq/app/src/main/res/drawable/ic_baseline_settings_24.xml" value="0.1" />
         <entry key="..\:/Users/Tabkil2019/AndroidStudioProjects/Newparq/app/src/main/res/drawable/rate_us_dialog_layout.xml" value="0.1" />
         <entry key="..\:/Users/Tabkil2019/AndroidStudioProjects/Newparq/app/src/main/res/drawable/round.xml" value="0.161" />
         <entry key="..\:/Users/Tabkil2019/AndroidStudioProjects/Newparq/app/src/main/res/drawable/round_back_blue_10.xml" value="0.1" />
@@ -27,6 +28,7 @@
         <entry key="..\:/Users/Tabkil2019/AndroidStudioProjects/Newparq/app/src/main/res/layout/activity_maps.xml" value="0.18854166666666666" />
         <entry key="..\:/Users/Tabkil2019/AndroidStudioProjects/Newparq/app/src/main/res/layout/activity_mpesa.xml" value="0.25" />
         <entry key="..\:/Users/Tabkil2019/AndroidStudioProjects/Newparq/app/src/main/res/layout/activity_payments.xml" value="0.1712962962962963" />
+        <entry key="..\:/Users/Tabkil2019/AndroidStudioProjects/Newparq/app/src/main/res/layout/activity_preference.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Tabkil2019/AndroidStudioProjects/Newparq/app/src/main/res/layout/activity_rate_us.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Tabkil2019/AndroidStudioProjects/Newparq/app/src/main/res/layout/activity_register.xml" value="0.1" />
         <entry key="..\:/Users/Tabkil2019/AndroidStudioProjects/Newparq/app/src/main/res/layout/activity_user_profile.xml" value="0.1" />
@@ -36,6 +38,7 @@
         <entry key="..\:/Users/Tabkil2019/AndroidStudioProjects/Newparq/app/src/main/res/layout/list_item.xml" value="0.1" />
         <entry key="..\:/Users/Tabkil2019/AndroidStudioProjects/Newparq/app/src/main/res/layout/rate_us_dialog_layout.xml" value="0.15" />
         <entry key="..\:/Users/Tabkil2019/AndroidStudioProjects/Newparq/app/src/main/res/menu/main_menu.xml" value="0.1" />
+        <entry key="..\:/Users/Tabkil2019/AndroidStudioProjects/Newparq/app/src/main/res/xml/prefs.xml" value="0.1" />
       </map>
     </option>
   </component>
