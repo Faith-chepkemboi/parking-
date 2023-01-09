@@ -54,6 +54,7 @@ public class BookActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 bookslotDetails();
+                Toast.makeText(BookActivity.this, "We will contact you , for payments and reservation", Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -63,14 +64,16 @@ public class BookActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(BookActivity.this, MpesaActivity.class);
                 startActivity(intent);
+//                Toast.makeText(BookActivity.this, "We will contact you , for payments and reservation", Toast.LENGTH_SHORT).show();
             }
         });
 
         bSubmit1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(BookActivity.this, MpesaActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent(BookActivity.this, MpesaActivity.class);
+//                startActivity(intent);
+                Toast.makeText(BookActivity.this, "We will contact you , for payments and reservation", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -91,10 +94,11 @@ public class BookActivity extends AppCompatActivity {
 
         adlotRef.push().setValue(bookDetails);
 
-        Toast.makeText(this, "Go to payment", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, "Go to payment", Toast.LENGTH_SHORT).show();
+        Toast.makeText(BookActivity.this, "We will contact you , for payments and reservation", Toast.LENGTH_SHORT).show();
 
-        Intent intent = new Intent(BookActivity.this, PaymentsActivity.class);
-        startActivity(intent);
+//        Intent intent = new Intent(BookActivity.this, PaymentsActivity.class);
+//        startActivity(intent);
 
 
     }

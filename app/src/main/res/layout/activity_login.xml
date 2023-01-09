@@ -134,13 +134,16 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:fontFamily="sans-serif"
-                    android:text="Don't have an account?" />
+
+                    android:text="Don't have an account? " />
 
                 <TextView
                     android:layout_width="wrap_content"
+                    android:id="@+id/creatAcc"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:fontFamily="sans-serif"
+                    android:textColorHint="@color/purple_500"
                     android:text="Create Account" />
 
             </LinearLayout>

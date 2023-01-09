@@ -50,7 +50,9 @@ public class MpesaActivity extends AppCompatActivity implements View.OnClickList
 
         mPay.setOnClickListener(this);
 
+
             getAccessToken();
+
 
         }
     private void getAccessToken() {

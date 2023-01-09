@@ -1,9 +1,159 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HelpActivity">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/article_head"
+        android:background="@color/teal_700"
+        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:padding="5dp"
+        android:text="Welcome to Newpaqk. Here is some details on how our app works"
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+        />
+
+    <TextView
+        android:id="@+id/article_subhead"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/article_head"
+        android:padding="10dp"
+
+        android:text="1.Google maps Activity"
+        android:textColor="@color/teal_700"
+
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/article_paragraph1"
+
+
+        android:text="This is the home section whereby, you search for a where you would like to park your vehicle and once you locate a place, you will be reached soon by our client
+"
+        android:layout_below="@id/article_subhead"
+
+
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/article_paragraph2"
+        android:padding="10dp"
+        android:text="2.Navigation menu"
+        android:textColor="@color/teal_700"
+
+
+        android:layout_below="@id/article_paragraph1"
+
+        />
+
+    <TextView
+        android:id="@+id/article_paragraph3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/article_paragraph2"
+        android:padding="10dp"
+
+        android:text="it contains the following:The add slot,available slot,rate us, settings, and profile section. to open it you press the menu icon"
+
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/article_paragraph4"
+        android:padding="10dp"
+        android:text="(a).add slot.This where if you have slots for hire you can always add them then you will be contacted for further clarification "
+
+
+        android:layout_below="@id/article_paragraph3"
+
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/article_paragraph5"
+        android:padding="10dp"
+        android:text="(b).availables slot section.This where if you slots for hire  has been added"
+
+
+        android:layout_below="@id/article_paragraph4"
+
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/article_paragraph6"
+        android:padding="10dp"
+        android:text="(b).Help section.This where the details information about the application is.it gives overview of how to use the application"
+
+
+        android:layout_below="@id/article_paragraph5"
+
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/article_paragraph7"
+        android:padding="10dp"
+        android:text="(b).Rate section.This where you rate the application on how ease it was when using it"
+
+
+        android:layout_below="@id/article_paragraph6"
+
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/article_paragraph8"
+        android:padding="10dp"
+        android:text="(b).profile section.This where the your details from registration is found"
+
+
+        android:layout_below="@id/article_paragraph7"
+
+        />
+
+    <TextView
+        android:id="@+id/article_paragraph9"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/article_paragraph8"
+        android:layout_centerInParent="true"
+        android:textColor="@color/teal_700"
+        android:padding="5dp"
+        android:text="@string/thank"
+
+        />
+    <TextView
+        android:id="@+id/article_paragraph11"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/article_paragraph9"
+        android:layout_centerInParent="true"
+        android:textColor="@color/teal_700"
+        android:padding="3dp"
+        android:text="Contact us through :"
+
+        />
+    <TextView
+        android:id="@+id/article_paragraph12"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/article_paragraph11"
+        android:layout_centerInParent="true"
+        android:textColor="@color/teal_700"
+        android:padding="5dp"
+        android:text="@string/hcontact"
+
+        />
+
+
+</RelativeLayout>

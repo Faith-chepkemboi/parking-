@@ -60,7 +60,7 @@
                 android:layout_marginTop="20dp"
                 android:background="@drawable/round"
                 android:hint="Number of Slots"
-                android:inputType="time"
+                android:inputType="number"
                 android:textColor="@color/purple_700" />
 
 

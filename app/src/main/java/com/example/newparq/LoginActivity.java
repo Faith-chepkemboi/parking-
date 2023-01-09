@@ -1,10 +1,5 @@
 package com.example.newparq;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,6 +16,10 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -31,14 +30,15 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class LoginActivity extends AppCompatActivity {
-private EditText editTextpassword, editTextemail;
-private ProgressBar progressBar;
-private FirebaseAuth authProfile;
-private  ImageView goto_reg;
-private  TextView forgotpass;
-private TextView remMe;
-private Button button_login;
-private static final String TAG = "LoginActivity";
+    private EditText editTextpassword, editTextemail;
+    private ProgressBar progressBar;
+    private FirebaseAuth authProfile;
+    private ImageView goto_reg;
+    private TextView forgotpass;
+    private TextView remMe;
+    private TextView createAcc;
+    private Button button_login;
+    private static final String TAG = "LoginActivity";
 
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://newparq-475c8-default-rtdb.firebaseio.com/");
 
@@ -51,64 +51,65 @@ private static final String TAG = "LoginActivity";
 //        getSupportActionBar().setTitle("Login");
         authProfile = FirebaseAuth.getInstance();
 
-         editTextemail= findViewById(R.id.email);
-         editTextpassword = findViewById(R.id.password);
+        editTextemail = findViewById(R.id.email);
+        editTextpassword = findViewById(R.id.password);
 //        final Button button_login = findViewById(R.id.login);
+        createAcc = findViewById(R.id.creatAcc);
 
 
-          progressBar=findViewById(R.id.progress);
+        progressBar = findViewById(R.id.progress);
 
-          authProfile = FirebaseAuth.getInstance();
+        authProfile = FirebaseAuth.getInstance();
 
-          //show hide password
-           ImageView imageViewHide = findViewById(R.id.eye);
-           imageViewHide.setImageResource(R.drawable.ic_hide_pwd);
-           imageViewHide.setOnClickListener(new View.OnClickListener() {
-               @Override
-               public void onClick(View view) {
-                   if (editTextpassword.getTransformationMethod().equals(HideReturnsTransformationMethod.getInstance())){
+        //show hide password
+        ImageView imageViewHide = findViewById(R.id.eye);
+        imageViewHide.setImageResource(R.drawable.ic_hide_pwd);
+        imageViewHide.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (editTextpassword.getTransformationMethod().equals(HideReturnsTransformationMethod.getInstance())) {
 
-                       editTextpassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
-
-
-                       //change icon
-                       imageViewHide.setImageResource(R.drawable.ic_hide_pwd);
+                    editTextpassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
 
 
-                   } else {
-                       editTextpassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                       imageViewHide.setImageResource(R.drawable.ic_show_pwd);
-                   }
-               }
-              });
+                    //change icon
+                    imageViewHide.setImageResource(R.drawable.ic_hide_pwd);
+
+
+                } else {
+                    editTextpassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                    imageViewHide.setImageResource(R.drawable.ic_show_pwd);
+                }
+            }
+        });
 
 
 
-            //login user
-        Button button_login =findViewById(R.id.login);
+        //login user
+        Button button_login = findViewById(R.id.login);
         button_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String textEmail = editTextemail.getText().toString();
                 String textPass = editTextpassword.getText().toString();
 
-                if (TextUtils.isEmpty(textEmail)){
+                if (TextUtils.isEmpty(textEmail)) {
                     Toast.makeText(LoginActivity.this, "Please enter your email", Toast.LENGTH_SHORT).show();
                     editTextemail.setError("Email is required");
                     editTextemail.requestFocus();
-                }else if (!Patterns.EMAIL_ADDRESS.matcher(textEmail).matches()){
+                } else if (!Patterns.EMAIL_ADDRESS.matcher(textEmail).matches()) {
                     Toast.makeText(LoginActivity.this, "please re_enter your email", Toast.LENGTH_SHORT).show();
                     editTextemail.setError("invalid email");
                     editTextemail.requestFocus();
-                    
-                }else if (TextUtils.isEmpty(textPass)){
+
+                } else if (TextUtils.isEmpty(textPass)) {
                     Toast.makeText(LoginActivity.this, "please enter password", Toast.LENGTH_SHORT).show();
                     editTextpassword.setError("password id required");
                     editTextpassword.requestFocus();
 
-                }else {
+                } else {
                     progressBar.setVisibility(View.VISIBLE);
-                    loginUser(textEmail,textPass);
+                    loginUser(textEmail, textPass);
                 }
             }
         });
@@ -116,62 +117,14 @@ private static final String TAG = "LoginActivity";
 
 
 
-
-//        button_login.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                //        set titile
-////                getSupportActionBar().setTitle("Newparq");
-//
-//                final String phoneTxt= editTextEmail.getText().toString();
-//                final String passwordTxt = password.getText().toString();
-////                final String loginbtn = button_login.getText().toString();
-////                final String fogopass = forgotpasss.getText().toString();
-//
-//
-//                if (phoneTxt.isEmpty()) {
-//                    Toast.makeText(LoginActivity.this, "Please enter your password", Toast.LENGTH_SHORT).show();
-//                } else if (passwordTxt.isEmpty()) {
-//                    Toast.makeText(LoginActivity.this, "Please enter your password", Toast.LENGTH_SHORT).show();
-//
-//
-//                } else{
-//
-//                    databaseReference.child("sers").addListenerForSingleValueEvent(new ValueEventListener() {
-//
-//                        @Override
-//                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-//
-//                            //if email exists in db
-//                            if(snapshot.hasChild(phoneTxt)){
-//                                //matching password of user and match to one entered
-//                                final String getPassword = snapshot.child(phoneTxt).child("password").getValue(String.class);
-//
-//
-//
-//                                if (getPassword.equals(passwordTxt)){
-//                                    Toast.makeText(LoginActivity.this, "Logged in", Toast.LENGTH_SHORT).show();
-//                                    finish();
-//                                }
-//                                else{
-//                                    Toast.makeText(LoginActivity.this, "Wrong password", Toast.LENGTH_SHORT).show();
-//                                }
-//
-//                            }
-//
-//                        }
-//
-//                        @Override
-//                        public void onCancelled(@NonNull DatabaseError error) {
-//
-//                        }
-//                    });
-//
-//
-//                }
-//
-//            }
-//        });
+        //create account
+        createAcc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Intent c = new Intent(LoginActivity.this,RegisterActivity.class);
+                startActivity(c);
+            }
+        });
 
         ImageView gotoReg = findViewById(R.id.goto_reg);
         gotoReg.setOnClickListener(new View.OnClickListener() {
@@ -192,14 +145,12 @@ private static final String TAG = "LoginActivity";
 //                startActivity(i);
                 Toast.makeText(LoginActivity.this, "You can reset your password now",
                         Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(LoginActivity.this,ForgotPassActivity.class));
-
+                startActivity(new Intent(LoginActivity.this, ForgotPassActivity.class));
 
 
             }
         });
     }
-
 
 
     private void loginUser(String textEmail, String textPass) {
@@ -215,19 +166,19 @@ private static final String TAG = "LoginActivity";
                     FirebaseUser firebaseUser = authProfile.getCurrentUser();
 
                     //checking if email is verified before user can access their profile
-                    if (firebaseUser.isEmailVerified()){
+                    if (firebaseUser.isEmailVerified()) {
                         Toast.makeText(LoginActivity.this, "You are logged in now", Toast.LENGTH_SHORT).show();
 
                         //open user profile
                         //start user profile activity
-                        startActivity(new Intent(LoginActivity.this,GoogleMapsActivity.class));
+                        startActivity(new Intent(LoginActivity.this, GoogleMapsActivity.class));
                         finish();
 
-                    }else {
+                    } else {
                         firebaseUser.sendEmailVerification();
                         authProfile.signOut();  //signing the user
                         showAlertDialog();
-                        
+
                     }
 
                 } else {
@@ -271,35 +222,13 @@ private static final String TAG = "LoginActivity";
         });
 
         //create the alertdialog
-        AlertDialog alertDialog =builder.create();
+        AlertDialog alertDialog = builder.create();
 
         //show the alertdialog
         alertDialog.show();
 
     }
 
-//    @Override
-//    protected void onStart() {
-//        super.onStart();
-//        if (authProfile.getCurrentUser() != null) {
-//            Toast.makeText(this, "Already logged in", Toast.LENGTH_SHORT).show();
-//
-//            //start the userprofileActivity
-//            startActivity(new Intent(LoginActivity.this, GoogleMapsActivity.class));
-//            finish(); //close login activity
-//        }
-//        else{
-//            Toast.makeText(this, "You can now login ", Toast.LENGTH_SHORT).show();
-//        }
-    }
 
+}
 
-
-
-
-//
-//    }
-//
-//    private void attempt_login() {
-//    }
-//}

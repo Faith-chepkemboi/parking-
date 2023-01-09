@@ -7,14 +7,18 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -24,6 +28,7 @@ import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.widget.AutoCompleteTextView;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -68,6 +73,8 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
     NavigationView navigationView;
     Toolbar toolbar;
 
+//    ImageView imageViewSearch;
+
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
@@ -103,6 +110,8 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
                         .snippet("Book a slot")
                         .icon(BitmapFromVector(getApplicationContext(), R.drawable.ic_baseline_local_parking_24))
                         .title("Parking slot"));
+
+
                 mMap.animateCamera(CameraUpdateFactory.zoomTo(18.0f));
                 mMap.moveCamera(CameraUpdateFactory.newLatLng(locationArrayList.get(i)));
 
@@ -121,6 +130,30 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
                     startActivity(intent);
                 }
             });
+
+            String searchString = searchText.getText().toString();
+
+            Geocoder geocoder = new Geocoder(GoogleMapsActivity.this);
+            List<Address> list = new ArrayList<>();
+            try {
+                list = geocoder.getFromLocationName(searchString, 1);
+
+            } catch (IOException e) {
+                Log.e(TAG, "geolocate: IOException:" + e.getMessage());
+            }
+            if (list.size() > 0) {
+                Address address = list.get(0);
+
+                Log.d(TAG, "geolocate: found a location:" + address.toString());
+
+                moveCamera(new LatLng(address.getLatitude(), address.getLongitude()), DEFAULT_ZOOM,
+                        address.getAddressLine(0));
+
+
+            }
+
+
+
 
 
         }
@@ -171,6 +204,9 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
     LatLng Mugo = new LatLng(0.0341496, 36.3626534);
     LatLng KCB = new LatLng(0.035165, 36.364293);
     LatLng Equity = new LatLng(0.0386, 36.3643);
+    LatLng ZionMall=new LatLng(0.5176, 35.2781);
+    LatLng Rupa=new LatLng(0.5139, 35.2907);
+    LatLng Kheatis=new LatLng(0.5151, 35.2772);
 
 
     private ArrayList<LatLng> locationArrayList;
@@ -189,6 +225,10 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
     private GoogleApiClient mGoogleApiClent;
     private AutoCompleteTextView searchText;
     private ImageView gps;
+    //
+    private DrawerLayout dLayout;
+    private RelativeLayout relativeLayout;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -197,6 +237,11 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
 
         searchText = (AutoCompleteTextView) findViewById(R.id.search_location);
         gps = (ImageView) findViewById(R.id.ic_gps);
+//        searchView=findViewById(R.id.sv_location);
+        ImageView imageViewSearch;
+
+        imageViewSearch =findViewById(R.id.ic_magnify);
+
 
         //navigation drawers
         drawerLayout = findViewById(R.id.drawerLayout);
@@ -228,9 +273,49 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
         locationArrayList.add(KCB);
         locationArrayList.add(Mugo);
         locationArrayList.add(Equity);
+        locationArrayList.add(ZionMall);
+        locationArrayList.add(Rupa);
+        locationArrayList.add(Kheatis);
+
+
+        //settingsAct
+
+        drawerLayout = findViewById(R.id.drawerLayout);
+        relativeLayout=findViewById(R.id.rv);
+        Load_setting();
 
 
     }
+
+    //settingsActivity
+    private void Load_setting(){
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+        boolean chk_night = sp.getBoolean("NIGHT", false);
+        if (chk_night) {
+            drawerLayout.setBackgroundColor(Color.parseColor("#222222"));
+            gps.setBackgroundColor(Color.parseColor("#ffffff"));
+
+        } else {
+            drawerLayout.setBackgroundColor(Color.parseColor("#ffffff"));
+            gps.setBackgroundColor(Color.parseColor("#222222"));
+
+        }
+        String orien = sp.getString("ORIENTATION", "false");
+
+        if ("1".equals(orien)) {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_BEHIND);
+        } else if ("2".equals(orien)) {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+        } else if ("3".equals(orien)) {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+
+        }
+    }
+
+
+
+
 
     //to close drawerlayout on back press
 
@@ -255,8 +340,10 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
         mGoogleApiClent = new GoogleApiClient
                 .Builder(this)
                 .addApi(Places.GEO_DATA_API)
+
                 .addApi(Places.PLACE_DETECTION_API)
                 .enableAutoManage(this, this)
+
                 .build();
         PlaceAutocompleteAdapter mplaceAutocompleteAdapter = new PlaceAutocompleteAdapter(this, mGeoDataClient, LAT_LNG_BOUNDS, null, mGoogleApiClent);
 
@@ -444,6 +531,8 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.nav_home:
+
+
                 break;
             case R.id.nav_profile:
                 Intent intent = new Intent(GoogleMapsActivity.this, UserProfileActivity.class);
@@ -466,25 +555,24 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
                 Intent intent3 = new Intent(GoogleMapsActivity.this, HelpActivity.class);
                 startActivity(intent3);
                 break;
-            case R.id.nav_logout:
-                break;
 
-//
-//                Intent intent4=new Intent(GoogleMapsActivity.this,LoginActivity.class);
-//                startActivity(intent4);
-
-//                intent4.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//                startActivity(intent4);
-//                this.finish();
             case R.id.nav_setting:
-                Intent intent4 = new Intent(GoogleMapsActivity.this, Preference.class);
-                startActivity(intent4);
+                Intent intent8 = new Intent(GoogleMapsActivity.this, Preference.class);
+                startActivity(intent8);
+                break;
 
         }
         drawerLayout.closeDrawer(GravityCompat.START);
 
 
         return true;
+
+    }
+
+    @Override
+    protected void onResume() {
+        Load_setting();
+        super.onResume();
     }
 }
 

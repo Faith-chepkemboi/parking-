@@ -137,7 +137,7 @@ public class AddSlotActivity extends AppCompatActivity {
 
         addslotRef.push().setValue(addDetails);
 
-        Toast.makeText(this, "Data inserted ",
+        Toast.makeText(this, "Thank you, our customer care will reach you soon ",
                 Toast.LENGTH_SHORT).show();
 
 

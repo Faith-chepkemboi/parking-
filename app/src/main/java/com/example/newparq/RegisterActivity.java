@@ -122,45 +122,6 @@ public class RegisterActivity extends AppCompatActivity {
 
                 }
 
-
-//
-//                else{
-//                    prog.setVisibility(View.VISIBLE);
-//
-//                    databaseReference.child("sers").addListenerForSingleValueEvent(new ValueEventListener() {
-//                        @Override
-//                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-//
-//
-//                            if(snapshot.hasChild(phoneTxt)){
-//                                Toast.makeText(RegisterActivity.this, "phone already registered ", Toast.LENGTH_SHORT).show();
-//
-//
-//                            }else{
-//                                databaseReference.child("sers").child(phoneTxt).child("fullname").setValue(fullnameTxt);
-//                                databaseReference.child("sers").child(phoneTxt).child("email").setValue(emailTxt);
-//                                databaseReference.child("sers").child(phoneTxt).child("identyNumber").setValue(identyNumberTxt);
-//                                databaseReference.child("sers").child(phoneTxt).child("password").setValue(passwordTxt);
-//
-////                                Toast.makeText(RegisterActivity.this, "Registration successfull", Toast.LENGTH_SHORT).show();
-////                                finish();
-//
-//                            }
-//
-//                        }
-//
-//                        @Override
-//                        public void onCancelled(@NonNull DatabaseError error) {
-//
-//                        }
-//                    });
-//
-//                }
-//
-//
-//
-//            }
-//        });
                 else {
                     progressBar.setVisibility(View.VISIBLE);
                     registerUser(fullnameTxt, phoneTxt, identyNumberTxt, emailTxt, passwordTxt);
@@ -224,7 +185,7 @@ public class RegisterActivity extends AppCompatActivity {
                                                //to prevent user from returining to register activity on pressing back button after registration
 //                                               intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK
 //                                                    | Intent.FLAG_ACTIVITY_NEW_TASK);
-//                                              startActivity(intent);
+                                              startActivity(intent);
 //                                              finish();
 
                                             } else {

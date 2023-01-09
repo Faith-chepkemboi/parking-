@@ -4,16 +4,20 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/ic_baseline_home_24"
+            android:icon="@drawable/ic_baseline_book_24"
             android:title="Home" />
+<!--        <item-->
+<!--            android:id="@+id/nav_book"-->
+<!--            android:icon="@drawable/ic_baseline_home_24"-->
+<!--            android:title="Book a slot" />-->
         <item
             android:id="@+id/nav_addslot"
             android:icon="@drawable/ic_baseline_book_24"
-            android:title="Add slot" />
+            android:title="Add slot For Hire" />
         <item
             android:id="@+id/nav_available_slot"
             android:icon="@drawable/ic_baseline_event_available_24"
-            android:title="Available slot" />
+            android:title="Available slots" />
 
         <item
             android:id="@+id/help"
@@ -44,10 +48,10 @@
                         android:id="@+id/nav_setting"
                         android:icon="@drawable/ic_baseline_settings_24"
                         android:title="Settings" />
-                <item
-                    android:id="@+id/nav_logout"
-                    android:icon="@drawable/ic_baseline_logout_24"
-                    android:title="Logout" />
+<!--                <item-->
+<!--                    android:id="@+id/nav_logout"-->
+<!--                    android:icon="@drawable/ic_baseline_logout_24"-->
+<!--                    android:title="Logout" />-->
                 </group>
 
 

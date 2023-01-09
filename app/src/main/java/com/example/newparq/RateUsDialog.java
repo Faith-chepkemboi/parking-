@@ -14,6 +14,8 @@ import androidx.appcompat.widget.AppCompatButton;
 
 public class RateUsDialog extends Dialog {
     private float UserRate =0;
+    RatingBar ratingstars;
+    int myRating=0;
     public RateUsDialog(@NonNull Context context) {
         super(context);
     }
@@ -35,13 +37,19 @@ public class RateUsDialog extends Dialog {
             public void onClick(View v) {
                 String totalStars = "Total Stars:: " + ratingBar.getNumStars();
                 String rating = "Rating :: " + ratingBar.getRating();
-                
+//                Toast.makeText(this, "You can Now Register", Toast.LENGTH_SHORT).show();
+
+
 
 
 
             }
 
+
+
         });
+
+
         laterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,20 +61,21 @@ public class RateUsDialog extends Dialog {
 
         ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
-            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                if (rating <= 1) {
+            public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
+                int rating=(int) v;
+                if (v <= 1) {
                     ratingImage.setImageResource(R.drawable.one_star);
 
-                } else if (rating <= 2) {
+                } else if (v <= 2) {
                     ratingImage.setImageResource(R.drawable.two_star);
 
-                } else if (rating <= 3) {
+                } else if (v <= 3) {
                     ratingImage.setImageResource(R.drawable.three_star);
 
-                } else if (rating <= 4) {
+                } else if (v <= 4) {
                     ratingImage.setImageResource(R.drawable.four_star);
 
-                } else if (rating <= 5) {
+                } else if (v <= 5) {
                     ratingImage.setImageResource(R.drawable.star);
                 }
 
@@ -74,10 +83,12 @@ public class RateUsDialog extends Dialog {
                 animateImage(ratingImage);
 
                 //selectes rating by user
-                UserRate = rating;
+                UserRate = v;
+
 
             }
         });
+
 
     }
 
@@ -89,4 +100,6 @@ public class RateUsDialog extends Dialog {
 
 
     }
+
 }
+
